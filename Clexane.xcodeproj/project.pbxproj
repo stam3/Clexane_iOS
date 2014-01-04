@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4713FCFA18116C9F00DA561B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCF918116C9F00DA561B /* DatePickerViewController.m */; };
+		4713FCFD1812D01200DA561B /* MedicineDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCFC1812D01200DA561B /* MedicineDetailsViewController.m */; };
+		4733E9ED186594AF0035C26E /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733E9EC186594AF0035C26E /* NSString+Utilities.m */; };
+		473F98B317D257A100605D1E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98B217D257A100605D1E /* Parse.framework */; };
+		473F98B517D257B600605D1E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98B417D257B600605D1E /* AudioToolbox.framework */; };
+		473F98B717D257BD00605D1E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98B617D257BD00605D1E /* CFNetwork.framework */; };
+		473F98B917D257D000605D1E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98B817D257D000605D1E /* QuartzCore.framework */; };
+		473F98BB17D257D400605D1E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98BA17D257D400605D1E /* Security.framework */; };
+		473F98BD17D257DD00605D1E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98BC17D257DD00605D1E /* SystemConfiguration.framework */; };
+		473F98BF17D2583C00605D1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98BE17D2583C00605D1E /* CoreLocation.framework */; };
+		473F98C117D2584300605D1E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C017D2584300605D1E /* StoreKit.framework */; };
+		473F98C317D2587300605D1E /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C217D2587300605D1E /* libz.1.1.3.dylib */; };
+		473F98C517D2587D00605D1E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C417D2587D00605D1E /* MobileCoreServices.framework */; };
+		474661741877541F00D6C027 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474661731877541F00D6C027 /* SignupViewController.m */; };
+		47518082181BCFF4005BD86C /* MedDatePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 47518081181BCFF4005BD86C /* MedDatePair.m */; };
+		47518086181C0821005BD86C /* PicklineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 47518085181C0821005BD86C /* PicklineEntity.m */; };
+		475F0BC618427E1F00676DD7 /* UrlLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 475F0BC518427E1F00676DD7 /* UrlLoader.m */; };
+		478E6127181120CF00599906 /* MedicineMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478E6126181120CF00599906 /* MedicineMainViewController.m */; };
+		478E612A181124DA00599906 /* MedicineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 478E6129181124DA00599906 /* MedicineEntity.m */; };
+		478E612D1811283700599906 /* AddOrEditMedicineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478E612C1811283700599906 /* AddOrEditMedicineViewController.m */; };
+		47AE1DD9181CEC0000826D39 /* bell_chimes.caf in Resources */ = {isa = PBXBuildFile; fileRef = 47AE1DD7181CEC0000826D39 /* bell_chimes.caf */; };
+		47AE1DDC181D895A00826D39 /* PicklineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1DDB181D895A00826D39 /* PicklineTableViewController.m */; };
+		47AE1DE31822E44500826D39 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1DE21822E44500826D39 /* NSDate-Utilities.m */; };
+		47BD495018166099008CCCFE /* notificationSound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 47BD494F18166099008CCCFE /* notificationSound.caf */; };
+		47BD495318179856008CCCFE /* NudnikViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BD495218179856008CCCFE /* NudnikViewController.m */; };
+		47BD49571819AA1F008CCCFE /* ModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BD49561819AA1F008CCCFE /* ModelManager.m */; };
+		47BD495A1819B6DB008CCCFE /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BD49591819B6DB008CCCFE /* TodayViewController.m */; };
+		47C6E0E417D1E4F900783ACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C6E0E317D1E4F900783ACF /* UIKit.framework */; };
+		47C6E0E617D1E4F900783ACF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C6E0E517D1E4F900783ACF /* Foundation.framework */; };
+		47C6E0E817D1E4F900783ACF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C6E0E717D1E4F900783ACF /* CoreGraphics.framework */; };
+		47C6E0EE17D1E4F900783ACF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0EC17D1E4F900783ACF /* InfoPlist.strings */; };
+		47C6E0F017D1E4F900783ACF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0EF17D1E4F900783ACF /* main.m */; };
+		47C6E0F417D1E4F900783ACF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0F317D1E4F900783ACF /* AppDelegate.m */; };
+		47C6E0F617D1E4F900783ACF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0F517D1E4F900783ACF /* Default.png */; };
+		47C6E0F817D1E4F900783ACF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0F717D1E4F900783ACF /* Default@2x.png */; };
+		47C6E0FA17D1E4F900783ACF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0F917D1E4F900783ACF /* Default-568h@2x.png */; };
+		47C6E0FD17D1E4FA00783ACF /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0FB17D1E4FA00783ACF /* MainStoryboard.storyboard */; };
+		47C6E10017D1E4FA00783ACF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0FF17D1E4FA00783ACF /* ViewController.m */; };
+		47C6E10D17D1E98800783ACF /* ShotEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E10C17D1E98800783ACF /* ShotEntity.m */; };
+		47D1006A18281FAB00109CAC /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 47D1006518281FAB00109CAC /* SIAlertView.bundle */; };
+		47D1006B18281FAB00109CAC /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D1006718281FAB00109CAC /* SIAlertView.m */; };
+		47D1006C18281FAB00109CAC /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D1006918281FAB00109CAC /* UIWindow+SIUtils.m */; };
+		47F5DE901809A292003D7FD3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F5DE8F1809A292003D7FD3 /* MainViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4713FCF818116C9F00DA561B /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerViewController.h; path = ViewControllers/DatePickerViewController.h; sourceTree = "<group>"; };
+		4713FCF918116C9F00DA561B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerViewController.m; path = ViewControllers/DatePickerViewController.m; sourceTree = "<group>"; };
+		4713FCFB1812D01200DA561B /* MedicineDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedicineDetailsViewController.h; path = ViewControllers/MedicineDetailsViewController.h; sourceTree = "<group>"; };
+		4713FCFC1812D01200DA561B /* MedicineDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MedicineDetailsViewController.m; path = ViewControllers/MedicineDetailsViewController.m; sourceTree = "<group>"; };
+		4733E9EB186594AF0035C26E /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Utilities.h"; path = "Utilities/NSString+Utilities.h"; sourceTree = "<group>"; };
+		4733E9EC186594AF0035C26E /* NSString+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Utilities.m"; path = "Utilities/NSString+Utilities.m"; sourceTree = "<group>"; };
+		473F98B217D257A100605D1E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		473F98B417D257B600605D1E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		473F98B617D257BD00605D1E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		473F98B817D257D000605D1E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		473F98BA17D257D400605D1E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		473F98BC17D257DD00605D1E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		473F98BE17D2583C00605D1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		473F98C017D2584300605D1E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		473F98C217D2587300605D1E /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		473F98C417D2587D00605D1E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		474661721877541F00D6C027 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ViewControllers/SignupViewController.h; sourceTree = "<group>"; };
+		474661731877541F00D6C027 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ViewControllers/SignupViewController.m; sourceTree = "<group>"; };
+		47518080181BCFF4005BD86C /* MedDatePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedDatePair.h; path = Entities/MedDatePair.h; sourceTree = "<group>"; };
+		47518081181BCFF4005BD86C /* MedDatePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MedDatePair.m; path = Entities/MedDatePair.m; sourceTree = "<group>"; };
+		47518084181C0821005BD86C /* PicklineEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PicklineEntity.h; path = Entities/PicklineEntity.h; sourceTree = "<group>"; };
+		47518085181C0821005BD86C /* PicklineEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PicklineEntity.m; path = Entities/PicklineEntity.m; sourceTree = "<group>"; };
+		475F0BC418427E1F00676DD7 /* UrlLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UrlLoader.h; path = Utils/UrlLoader.h; sourceTree = "<group>"; };
+		475F0BC518427E1F00676DD7 /* UrlLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UrlLoader.m; path = Utils/UrlLoader.m; sourceTree = "<group>"; };
+		478E6125181120CF00599906 /* MedicineMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedicineMainViewController.h; path = ViewControllers/MedicineMainViewController.h; sourceTree = "<group>"; };
+		478E6126181120CF00599906 /* MedicineMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MedicineMainViewController.m; path = ViewControllers/MedicineMainViewController.m; sourceTree = "<group>"; };
+		478E6128181124DA00599906 /* MedicineEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedicineEntity.h; path = Entities/MedicineEntity.h; sourceTree = "<group>"; };
+		478E6129181124DA00599906 /* MedicineEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MedicineEntity.m; path = Entities/MedicineEntity.m; sourceTree = "<group>"; };
+		478E612B1811283700599906 /* AddOrEditMedicineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddOrEditMedicineViewController.h; path = ViewControllers/AddOrEditMedicineViewController.h; sourceTree = "<group>"; };
+		478E612C1811283700599906 /* AddOrEditMedicineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddOrEditMedicineViewController.m; path = ViewControllers/AddOrEditMedicineViewController.m; sourceTree = "<group>"; };
+		47AE1DD7181CEC0000826D39 /* bell_chimes.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell_chimes.caf; sourceTree = "<group>"; };
+		47AE1DDA181D895A00826D39 /* PicklineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PicklineTableViewController.h; path = ViewControllers/PicklineTableViewController.h; sourceTree = "<group>"; };
+		47AE1DDB181D895A00826D39 /* PicklineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PicklineTableViewController.m; path = ViewControllers/PicklineTableViewController.m; sourceTree = "<group>"; };
+		47AE1DE11822E44500826D39 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate-Utilities.h"; path = "Utilities/NSDate-Utilities.h"; sourceTree = "<group>"; };
+		47AE1DE21822E44500826D39 /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate-Utilities.m"; path = "Utilities/NSDate-Utilities.m"; sourceTree = "<group>"; };
+		47BD494F18166099008CCCFE /* notificationSound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notificationSound.caf; sourceTree = "<group>"; };
+		47BD495118179856008CCCFE /* NudnikViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NudnikViewController.h; path = ViewControllers/NudnikViewController.h; sourceTree = "<group>"; };
+		47BD495218179856008CCCFE /* NudnikViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NudnikViewController.m; path = ViewControllers/NudnikViewController.m; sourceTree = "<group>"; };
+		47BD49551819AA1F008CCCFE /* ModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelManager.h; path = Model/ModelManager.h; sourceTree = "<group>"; };
+		47BD49561819AA1F008CCCFE /* ModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelManager.m; path = Model/ModelManager.m; sourceTree = "<group>"; };
+		47BD49581819B6DB008CCCFE /* TodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TodayViewController.h; path = ViewControllers/TodayViewController.h; sourceTree = "<group>"; };
+		47BD49591819B6DB008CCCFE /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TodayViewController.m; path = ViewControllers/TodayViewController.m; sourceTree = "<group>"; };
+		47C6E0DF17D1E4F900783ACF /* Clexane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clexane.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47C6E0E317D1E4F900783ACF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		47C6E0E517D1E4F900783ACF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		47C6E0E717D1E4F900783ACF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		47C6E0EB17D1E4F900783ACF /* Clexane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Clexane-Info.plist"; sourceTree = "<group>"; };
+		47C6E0ED17D1E4F900783ACF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		47C6E0EF17D1E4F900783ACF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		47C6E0F117D1E4F900783ACF /* Clexane-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clexane-Prefix.pch"; sourceTree = "<group>"; };
+		47C6E0F217D1E4F900783ACF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		47C6E0F317D1E4F900783ACF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		47C6E0F517D1E4F900783ACF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		47C6E0F717D1E4F900783ACF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		47C6E0F917D1E4F900783ACF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		47C6E0FC17D1E4FA00783ACF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		47C6E0FE17D1E4FA00783ACF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		47C6E0FF17D1E4FA00783ACF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		47C6E10B17D1E98800783ACF /* ShotEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShotEntity.h; sourceTree = "<group>"; };
+		47C6E10C17D1E98800783ACF /* ShotEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotEntity.m; sourceTree = "<group>"; };
+		47D1006518281FAB00109CAC /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
+		47D1006618281FAB00109CAC /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
+		47D1006718281FAB00109CAC /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
+		47D1006818281FAB00109CAC /* UIWindow+SIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SIUtils.h"; sourceTree = "<group>"; };
+		47D1006918281FAB00109CAC /* UIWindow+SIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SIUtils.m"; sourceTree = "<group>"; };
+		47F5DE8E1809A292003D7FD3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ViewControllers/MainViewController.h; sourceTree = "<group>"; };
+		47F5DE8F1809A292003D7FD3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ViewControllers/MainViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		47C6E0DC17D1E4F900783ACF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				473F98C517D2587D00605D1E /* MobileCoreServices.framework in Frameworks */,
+				473F98C317D2587300605D1E /* libz.1.1.3.dylib in Frameworks */,
+				473F98C117D2584300605D1E /* StoreKit.framework in Frameworks */,
+				473F98BF17D2583C00605D1E /* CoreLocation.framework in Frameworks */,
+				473F98BD17D257DD00605D1E /* SystemConfiguration.framework in Frameworks */,
+				473F98BB17D257D400605D1E /* Security.framework in Frameworks */,
+				473F98B917D257D000605D1E /* QuartzCore.framework in Frameworks */,
+				47C6E0E817D1E4F900783ACF /* CoreGraphics.framework in Frameworks */,
+				473F98B717D257BD00605D1E /* CFNetwork.framework in Frameworks */,
+				473F98B517D257B600605D1E /* AudioToolbox.framework in Frameworks */,
+				47C6E0E417D1E4F900783ACF /* UIKit.framework in Frameworks */,
+				47C6E0E617D1E4F900783ACF /* Foundation.framework in Frameworks */,
+				473F98B317D257A100605D1E /* Parse.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		47518083181C07FB005BD86C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				47C6E10B17D1E98800783ACF /* ShotEntity.h */,
+				47C6E10C17D1E98800783ACF /* ShotEntity.m */,
+				478E6128181124DA00599906 /* MedicineEntity.h */,
+				478E6129181124DA00599906 /* MedicineEntity.m */,
+				47518080181BCFF4005BD86C /* MedDatePair.h */,
+				47518081181BCFF4005BD86C /* MedDatePair.m */,
+				47518084181C0821005BD86C /* PicklineEntity.h */,
+				47518085181C0821005BD86C /* PicklineEntity.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		475F0BC318427E0900676DD7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				475F0BC418427E1F00676DD7 /* UrlLoader.h */,
+				475F0BC518427E1F00676DD7 /* UrlLoader.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		47AE1DDD1822E41600826D39 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4733E9EB186594AF0035C26E /* NSString+Utilities.h */,
+				4733E9EC186594AF0035C26E /* NSString+Utilities.m */,
+				47AE1DE11822E44500826D39 /* NSDate-Utilities.h */,
+				47AE1DE21822E44500826D39 /* NSDate-Utilities.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		47BD49541819A9FB008CCCFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47BD49551819AA1F008CCCFE /* ModelManager.h */,
+				47BD49561819AA1F008CCCFE /* ModelManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		47C6E0D417D1E4F900783ACF = {
+			isa = PBXGroup;
+			children = (
+				473F98C417D2587D00605D1E /* MobileCoreServices.framework */,
+				473F98C217D2587300605D1E /* libz.1.1.3.dylib */,
+				473F98C017D2584300605D1E /* StoreKit.framework */,
+				473F98BE17D2583C00605D1E /* CoreLocation.framework */,
+				473F98BC17D257DD00605D1E /* SystemConfiguration.framework */,
+				473F98BA17D257D400605D1E /* Security.framework */,
+				473F98B817D257D000605D1E /* QuartzCore.framework */,
+				473F98B617D257BD00605D1E /* CFNetwork.framework */,
+				473F98B417D257B600605D1E /* AudioToolbox.framework */,
+				47C6E0E917D1E4F900783ACF /* Clexane */,
+				47C6E0E217D1E4F900783ACF /* Frameworks */,
+				47C6E0E017D1E4F900783ACF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		47C6E0E017D1E4F900783ACF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				47C6E0DF17D1E4F900783ACF /* Clexane.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		47C6E0E217D1E4F900783ACF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				473F98B217D257A100605D1E /* Parse.framework */,
+				47C6E0E317D1E4F900783ACF /* UIKit.framework */,
+				47C6E0E517D1E4F900783ACF /* Foundation.framework */,
+				47C6E0E717D1E4F900783ACF /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		47C6E0E917D1E4F900783ACF /* Clexane */ = {
+			isa = PBXGroup;
+			children = (
+				475F0BC318427E0900676DD7 /* Utils */,
+				47D1006418281F9B00109CAC /* SIAlertView */,
+				47AE1DDD1822E41600826D39 /* Utilities */,
+				47AE1DD7181CEC0000826D39 /* bell_chimes.caf */,
+				47518083181C07FB005BD86C /* Entities */,
+				47BD49541819A9FB008CCCFE /* Model */,
+				47BD494F18166099008CCCFE /* notificationSound.caf */,
+				47F5DE911809A2E1003D7FD3 /* ViewControllers */,
+				47C6E0F217D1E4F900783ACF /* AppDelegate.h */,
+				47C6E0F317D1E4F900783ACF /* AppDelegate.m */,
+				47C6E0FB17D1E4FA00783ACF /* MainStoryboard.storyboard */,
+				47C6E0EA17D1E4F900783ACF /* Supporting Files */,
+			);
+			path = Clexane;
+			sourceTree = "<group>";
+		};
+		47C6E0EA17D1E4F900783ACF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				47C6E0EB17D1E4F900783ACF /* Clexane-Info.plist */,
+				47C6E0EC17D1E4F900783ACF /* InfoPlist.strings */,
+				47C6E0EF17D1E4F900783ACF /* main.m */,
+				47C6E0F117D1E4F900783ACF /* Clexane-Prefix.pch */,
+				47C6E0F517D1E4F900783ACF /* Default.png */,
+				47C6E0F717D1E4F900783ACF /* Default@2x.png */,
+				47C6E0F917D1E4F900783ACF /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		47D1006418281F9B00109CAC /* SIAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				47D1006518281FAB00109CAC /* SIAlertView.bundle */,
+				47D1006618281FAB00109CAC /* SIAlertView.h */,
+				47D1006718281FAB00109CAC /* SIAlertView.m */,
+				47D1006818281FAB00109CAC /* UIWindow+SIUtils.h */,
+				47D1006918281FAB00109CAC /* UIWindow+SIUtils.m */,
+			);
+			name = SIAlertView;
+			sourceTree = "<group>";
+		};
+		47F5DE911809A2E1003D7FD3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				47C6E0FE17D1E4FA00783ACF /* ViewController.h */,
+				47C6E0FF17D1E4FA00783ACF /* ViewController.m */,
+				47F5DE8E1809A292003D7FD3 /* MainViewController.h */,
+				47F5DE8F1809A292003D7FD3 /* MainViewController.m */,
+				478E6125181120CF00599906 /* MedicineMainViewController.h */,
+				478E6126181120CF00599906 /* MedicineMainViewController.m */,
+				478E612B1811283700599906 /* AddOrEditMedicineViewController.h */,
+				478E612C1811283700599906 /* AddOrEditMedicineViewController.m */,
+				4713FCF818116C9F00DA561B /* DatePickerViewController.h */,
+				4713FCF918116C9F00DA561B /* DatePickerViewController.m */,
+				4713FCFB1812D01200DA561B /* MedicineDetailsViewController.h */,
+				4713FCFC1812D01200DA561B /* MedicineDetailsViewController.m */,
+				47BD495118179856008CCCFE /* NudnikViewController.h */,
+				47BD495218179856008CCCFE /* NudnikViewController.m */,
+				47BD49581819B6DB008CCCFE /* TodayViewController.h */,
+				47BD49591819B6DB008CCCFE /* TodayViewController.m */,
+				47AE1DDA181D895A00826D39 /* PicklineTableViewController.h */,
+				47AE1DDB181D895A00826D39 /* PicklineTableViewController.m */,
+				474661721877541F00D6C027 /* SignupViewController.h */,
+				474661731877541F00D6C027 /* SignupViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		47C6E0DE17D1E4F900783ACF /* Clexane */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47C6E10317D1E4FA00783ACF /* Build configuration list for PBXNativeTarget "Clexane" */;
+			buildPhases = (
+				47C6E0DB17D1E4F900783ACF /* Sources */,
+				47C6E0DC17D1E4F900783ACF /* Frameworks */,
+				47C6E0DD17D1E4F900783ACF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clexane;
+			productName = Clexane;
+			productReference = 47C6E0DF17D1E4F900783ACF /* Clexane.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		47C6E0D617D1E4F900783ACF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "David Sayag";
+			};
+			buildConfigurationList = 47C6E0D917D1E4F900783ACF /* Build configuration list for PBXProject "Clexane" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 47C6E0D417D1E4F900783ACF;
+			productRefGroup = 47C6E0E017D1E4F900783ACF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				47C6E0DE17D1E4F900783ACF /* Clexane */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		47C6E0DD17D1E4F900783ACF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47C6E0EE17D1E4F900783ACF /* InfoPlist.strings in Resources */,
+				47C6E0F617D1E4F900783ACF /* Default.png in Resources */,
+				47D1006A18281FAB00109CAC /* SIAlertView.bundle in Resources */,
+				47C6E0F817D1E4F900783ACF /* Default@2x.png in Resources */,
+				47C6E0FA17D1E4F900783ACF /* Default-568h@2x.png in Resources */,
+				47BD495018166099008CCCFE /* notificationSound.caf in Resources */,
+				47AE1DD9181CEC0000826D39 /* bell_chimes.caf in Resources */,
+				47C6E0FD17D1E4FA00783ACF /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		47C6E0DB17D1E4F900783ACF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				475F0BC618427E1F00676DD7 /* UrlLoader.m in Sources */,
+				47BD495A1819B6DB008CCCFE /* TodayViewController.m in Sources */,
+				47C6E0F017D1E4F900783ACF /* main.m in Sources */,
+				47C6E0F417D1E4F900783ACF /* AppDelegate.m in Sources */,
+				474661741877541F00D6C027 /* SignupViewController.m in Sources */,
+				47AE1DE31822E44500826D39 /* NSDate-Utilities.m in Sources */,
+				4733E9ED186594AF0035C26E /* NSString+Utilities.m in Sources */,
+				47C6E10017D1E4FA00783ACF /* ViewController.m in Sources */,
+				478E612D1811283700599906 /* AddOrEditMedicineViewController.m in Sources */,
+				47C6E10D17D1E98800783ACF /* ShotEntity.m in Sources */,
+				47518082181BCFF4005BD86C /* MedDatePair.m in Sources */,
+				47518086181C0821005BD86C /* PicklineEntity.m in Sources */,
+				47D1006B18281FAB00109CAC /* SIAlertView.m in Sources */,
+				47F5DE901809A292003D7FD3 /* MainViewController.m in Sources */,
+				478E6127181120CF00599906 /* MedicineMainViewController.m in Sources */,
+				478E612A181124DA00599906 /* MedicineEntity.m in Sources */,
+				47BD49571819AA1F008CCCFE /* ModelManager.m in Sources */,
+				47AE1DDC181D895A00826D39 /* PicklineTableViewController.m in Sources */,
+				4713FCFA18116C9F00DA561B /* DatePickerViewController.m in Sources */,
+				47BD495318179856008CCCFE /* NudnikViewController.m in Sources */,
+				4713FCFD1812D01200DA561B /* MedicineDetailsViewController.m in Sources */,
+				47D1006C18281FAB00109CAC /* UIWindow+SIUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		47C6E0EC17D1E4F900783ACF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47C6E0ED17D1E4F900783ACF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		47C6E0FB17D1E4FA00783ACF /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47C6E0FC17D1E4FA00783ACF /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		47C6E10117D1E4FA00783ACF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		47C6E10217D1E4FA00783ACF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		47C6E10417D1E4FA00783ACF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clexane/Clexane-Prefix.pch";
+				INFOPLIST_FILE = "Clexane/Clexane-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		47C6E10517D1E4FA00783ACF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clexane/Clexane-Prefix.pch";
+				INFOPLIST_FILE = "Clexane/Clexane-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		47C6E0D917D1E4F900783ACF /* Build configuration list for PBXProject "Clexane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47C6E10117D1E4FA00783ACF /* Debug */,
+				47C6E10217D1E4FA00783ACF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47C6E10317D1E4FA00783ACF /* Build configuration list for PBXNativeTarget "Clexane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47C6E10417D1E4FA00783ACF /* Debug */,
+				47C6E10517D1E4FA00783ACF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 47C6E0D617D1E4F900783ACF /* Project object */;
+}
