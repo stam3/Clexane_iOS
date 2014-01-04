@@ -27,6 +27,18 @@
     self.modelManager = [[ModelManager alloc] init];
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"bgEnterDate"];
    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    
+    BOOL signedup = NO;
+    NSString* storyboardName = @"MainStoryboard";
+    if (!signedup)
+        storyboardName = @"SignupStoryboard";
+    
+    UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    UIViewController *rootController = [settingsStoryboard instantiateInitialViewController];
+    rootController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    self.window.rootViewController = rootController;
+    
     return YES;
 }
 
@@ -93,7 +105,8 @@
     NSLog(@"minutesBeforeDate: %d", [date minutesBeforeDate:now]);
     if ([date minutesBeforeDate:now] > 15) {
         
-        [self.modelManager loadData];
+        if (!debug)
+            [self.modelManager loadData];
     }
 }
 

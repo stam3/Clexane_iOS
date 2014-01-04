@@ -11,8 +11,17 @@
 #import "MedDatePair.h"
 #import "MedicineEntity.h"
 #import "UrlLoader.h"
+#import "User.h"
+
+@protocol ModelManagerDelegate <NSObject>
+
+- (void)saveClicked:(int)opCode result:(int)result errMsg:(NSString*)msg;
+
+@end
 
 @interface ModelManager : NSObject <UrlLoaderDelegate>
+
+@property (nonatomic, weak) id<ModelManagerDelegate> delegate;
 
 @property (nonatomic, strong) NSMutableArray* medicineData;
 @property (nonatomic, strong) PicklineEntity* picklineEntity;
@@ -28,7 +37,9 @@
 - (void)deleteMedicine:(MedicineEntity*)entity;
 - (void)saveMedicineInDB:(MedicineEntity*)medicineEntity isNewRecord:(BOOL)isNewRecord;
 
-// DB
+
+// APIs
+- (void)signup:(User*)user;
 - (void)updateMedicieRecord:(MedicineEntity*)entity;
 - (void)createMedicieRecord:(MedicineEntity*)entity;
 - (void)updatePicklineRecord:(PicklineEntity*)entity;

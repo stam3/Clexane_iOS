@@ -20,7 +20,9 @@
 		473F98C117D2584300605D1E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C017D2584300605D1E /* StoreKit.framework */; };
 		473F98C317D2587300605D1E /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C217D2587300605D1E /* libz.1.1.3.dylib */; };
 		473F98C517D2587D00605D1E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C417D2587D00605D1E /* MobileCoreServices.framework */; };
-		474661741877541F00D6C027 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474661731877541F00D6C027 /* SignupViewController.m */; };
+		474661771877F7CE00D6C027 /* SignupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 474661751877F7CE00D6C027 /* SignupStoryboard.storyboard */; };
+		4746617B187802FC00D6C027 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4746617A187802FC00D6C027 /* SignupViewController.m */; };
+		4746617E18785C3800D6C027 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4746617D18785C3800D6C027 /* User.m */; };
 		47518082181BCFF4005BD86C /* MedDatePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 47518081181BCFF4005BD86C /* MedDatePair.m */; };
 		47518086181C0821005BD86C /* PicklineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 47518085181C0821005BD86C /* PicklineEntity.m */; };
 		475F0BC618427E1F00676DD7 /* UrlLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 475F0BC518427E1F00676DD7 /* UrlLoader.m */; };
@@ -69,8 +71,11 @@
 		473F98C017D2584300605D1E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		473F98C217D2587300605D1E /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		473F98C417D2587D00605D1E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		474661721877541F00D6C027 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ViewControllers/SignupViewController.h; sourceTree = "<group>"; };
-		474661731877541F00D6C027 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ViewControllers/SignupViewController.m; sourceTree = "<group>"; };
+		474661761877F7CE00D6C027 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/SignupStoryboard.storyboard; sourceTree = "<group>"; };
+		47466179187802FC00D6C027 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ViewControllers/Signup/SignupViewController.h; sourceTree = "<group>"; };
+		4746617A187802FC00D6C027 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ViewControllers/Signup/SignupViewController.m; sourceTree = "<group>"; };
+		4746617C18785C3800D6C027 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Entities/User.h; sourceTree = "<group>"; };
+		4746617D18785C3800D6C027 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Entities/User.m; sourceTree = "<group>"; };
 		47518080181BCFF4005BD86C /* MedDatePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedDatePair.h; path = Entities/MedDatePair.h; sourceTree = "<group>"; };
 		47518081181BCFF4005BD86C /* MedDatePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MedDatePair.m; path = Entities/MedDatePair.m; sourceTree = "<group>"; };
 		47518084181C0821005BD86C /* PicklineEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PicklineEntity.h; path = Entities/PicklineEntity.h; sourceTree = "<group>"; };
@@ -146,6 +151,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		474661781877F80B00D6C027 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				47466179187802FC00D6C027 /* SignupViewController.h */,
+				4746617A187802FC00D6C027 /* SignupViewController.m */,
+			);
+			name = Signup;
+			sourceTree = "<group>";
+		};
 		47518083181C07FB005BD86C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +171,8 @@
 				47518081181BCFF4005BD86C /* MedDatePair.m */,
 				47518084181C0821005BD86C /* PicklineEntity.h */,
 				47518085181C0821005BD86C /* PicklineEntity.m */,
+				4746617C18785C3800D6C027 /* User.h */,
+				4746617D18785C3800D6C027 /* User.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -242,6 +258,7 @@
 				47C6E0F317D1E4F900783ACF /* AppDelegate.m */,
 				47C6E0FB17D1E4FA00783ACF /* MainStoryboard.storyboard */,
 				47C6E0EA17D1E4F900783ACF /* Supporting Files */,
+				474661751877F7CE00D6C027 /* SignupStoryboard.storyboard */,
 			);
 			path = Clexane;
 			sourceTree = "<group>";
@@ -275,6 +292,7 @@
 		47F5DE911809A2E1003D7FD3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				474661781877F80B00D6C027 /* Signup */,
 				47C6E0FE17D1E4FA00783ACF /* ViewController.h */,
 				47C6E0FF17D1E4FA00783ACF /* ViewController.m */,
 				47F5DE8E1809A292003D7FD3 /* MainViewController.h */,
@@ -293,8 +311,6 @@
 				47BD49591819B6DB008CCCFE /* TodayViewController.m */,
 				47AE1DDA181D895A00826D39 /* PicklineTableViewController.h */,
 				47AE1DDB181D895A00826D39 /* PicklineTableViewController.m */,
-				474661721877541F00D6C027 /* SignupViewController.h */,
-				474661731877541F00D6C027 /* SignupViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -354,6 +370,7 @@
 				47C6E0F617D1E4F900783ACF /* Default.png in Resources */,
 				47D1006A18281FAB00109CAC /* SIAlertView.bundle in Resources */,
 				47C6E0F817D1E4F900783ACF /* Default@2x.png in Resources */,
+				474661771877F7CE00D6C027 /* SignupStoryboard.storyboard in Resources */,
 				47C6E0FA17D1E4F900783ACF /* Default-568h@2x.png in Resources */,
 				47BD495018166099008CCCFE /* notificationSound.caf in Resources */,
 				47AE1DD9181CEC0000826D39 /* bell_chimes.caf in Resources */,
@@ -372,7 +389,6 @@
 				47BD495A1819B6DB008CCCFE /* TodayViewController.m in Sources */,
 				47C6E0F017D1E4F900783ACF /* main.m in Sources */,
 				47C6E0F417D1E4F900783ACF /* AppDelegate.m in Sources */,
-				474661741877541F00D6C027 /* SignupViewController.m in Sources */,
 				47AE1DE31822E44500826D39 /* NSDate-Utilities.m in Sources */,
 				4733E9ED186594AF0035C26E /* NSString+Utilities.m in Sources */,
 				47C6E10017D1E4FA00783ACF /* ViewController.m in Sources */,
@@ -381,6 +397,7 @@
 				47518082181BCFF4005BD86C /* MedDatePair.m in Sources */,
 				47518086181C0821005BD86C /* PicklineEntity.m in Sources */,
 				47D1006B18281FAB00109CAC /* SIAlertView.m in Sources */,
+				4746617E18785C3800D6C027 /* User.m in Sources */,
 				47F5DE901809A292003D7FD3 /* MainViewController.m in Sources */,
 				478E6127181120CF00599906 /* MedicineMainViewController.m in Sources */,
 				478E612A181124DA00599906 /* MedicineEntity.m in Sources */,
@@ -390,12 +407,21 @@
 				47BD495318179856008CCCFE /* NudnikViewController.m in Sources */,
 				4713FCFD1812D01200DA561B /* MedicineDetailsViewController.m in Sources */,
 				47D1006C18281FAB00109CAC /* UIWindow+SIUtils.m in Sources */,
+				4746617B187802FC00D6C027 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		474661751877F7CE00D6C027 /* SignupStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				474661761877F7CE00D6C027 /* en */,
+			);
+			name = SignupStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
 		47C6E0EC17D1E4F900783ACF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

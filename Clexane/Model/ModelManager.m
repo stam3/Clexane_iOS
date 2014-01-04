@@ -15,6 +15,7 @@
 #import <Parse/Parse.h>
 
 #define kOpCodeLogin        1
+#define kOpCodeSignup        2
 #define kOpCodeMedicines            100
 #define kOpCodePicklineShow         200
 #define kOpCodeMedicineHistories    300
@@ -23,6 +24,7 @@
 
 
 #define kAPILoginURL                        @"/login.json"
+#define kAPISignupURL                        @"/signup.json"
 #define kAPIMedicineURL                     @"/medicines.json"
 #define kAPIMedicineUpdateURL               @"/medicines/%@.json"
 #define kAPIPicklineURL                     @"/picklines/%@.json"
@@ -237,7 +239,8 @@
         
 //        [self login:@"i" password:@"1"];
         if (!isLoggedin)
-            [self login:@"b" password:@"1"];
+           // [self login:@"b" password:@"1"];
+            [self.alertView dismissAnimated:NO];
         else {
             [self loadMedicineData1];
             [self loadRailsPicklineData];
@@ -437,13 +440,21 @@
 
 #pragma mark- APIs Calls
 
+- (void)signup:(User*)user {
+    
+    UrlLoader* urlLoader = [[UrlLoader alloc] init];
+    urlLoader.delegate = self;
+    
+    NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@&password_confirmation=%@", user.email, user.password, user.password];
+    [urlLoader sendRequest:kAPISignupURL withParams:postData httpMethod:kHTTPMethodPost];
+}
+
 - (void)login:(NSString*)email password:(NSString*)password {
     
     UrlLoader* urlLoader = [[UrlLoader alloc] init];
     urlLoader.delegate = self;
     
     NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@", email, password];
-//    [urlLoader startPost:kAPILoginURL withPostDataStr:postData];
     [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
 }
 
@@ -528,6 +539,10 @@
     }
     int opCode = [[jsonResult objectForKey:@"opcode"] intValue];
     switch (opCode) {
+        case kOpCodeSignup:
+            NSLog(@"sdsd");
+            break;
+            // login
         case kOpCodeLogin:
             isLoggedin = YES;
             [[NSUserDefaults standardUserDefaults] setObject:[jsonResult objectForKey:@"picklineId"] forKey:kProfilePicklineID];
