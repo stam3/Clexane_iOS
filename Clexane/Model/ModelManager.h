@@ -13,9 +13,20 @@
 #import "UrlLoader.h"
 #import "User.h"
 
+#define kOpCodeLogin        1
+#define kOpCodeSignup        2
+#define kOpCodeMedicines            100
+#define kOpCodePicklineShow         200
+#define kOpCodeMedicineHistories    300
+
+#define kProfilePicklineID  @"pickID"
+#define kProfileEmailID  @"emailID"
+#define kProfilePswdID  @"pswdID"
+
+
 @protocol ModelManagerDelegate <NSObject>
 
-- (void)saveClicked:(int)opCode result:(int)result errMsg:(NSString*)msg;
+- (void)loadingDoneForOpcode:(int)opCode response:(int)response errMsg:(NSString*)msg;
 
 @end
 
@@ -39,7 +50,8 @@
 
 
 // APIs
-- (void)signup:(User*)user;
+- (void)signup:(User*)user delegate:(id<ModelManagerDelegate>) delegate;
+- (void)login:(User*)user delegate:(id<ModelManagerDelegate>) delegate;
 - (void)updateMedicieRecord:(MedicineEntity*)entity;
 - (void)createMedicieRecord:(MedicineEntity*)entity;
 - (void)updatePicklineRecord:(PicklineEntity*)entity;

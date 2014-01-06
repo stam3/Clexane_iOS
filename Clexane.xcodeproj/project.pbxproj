@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4702722D187A89690084E1B8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4702722C187A89690084E1B8 /* LoginViewController.m */; };
 		4713FCFA18116C9F00DA561B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCF918116C9F00DA561B /* DatePickerViewController.m */; };
 		4713FCFD1812D01200DA561B /* MedicineDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCFC1812D01200DA561B /* MedicineDetailsViewController.m */; };
 		4733E9ED186594AF0035C26E /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733E9EC186594AF0035C26E /* NSString+Utilities.m */; };
@@ -55,6 +56,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4702722B187A89690084E1B8 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/Signup/LoginViewController.h; sourceTree = "<group>"; };
+		4702722C187A89690084E1B8 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/Signup/LoginViewController.m; sourceTree = "<group>"; };
 		4713FCF818116C9F00DA561B /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerViewController.h; path = ViewControllers/DatePickerViewController.h; sourceTree = "<group>"; };
 		4713FCF918116C9F00DA561B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerViewController.m; path = ViewControllers/DatePickerViewController.m; sourceTree = "<group>"; };
 		4713FCFB1812D01200DA561B /* MedicineDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedicineDetailsViewController.h; path = ViewControllers/MedicineDetailsViewController.h; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 			children = (
 				47466179187802FC00D6C027 /* SignupViewController.h */,
 				4746617A187802FC00D6C027 /* SignupViewController.m */,
+				4702722B187A89690084E1B8 /* LoginViewController.h */,
+				4702722C187A89690084E1B8 /* LoginViewController.m */,
 			);
 			name = Signup;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 				47BD495A1819B6DB008CCCFE /* TodayViewController.m in Sources */,
 				47C6E0F017D1E4F900783ACF /* main.m in Sources */,
 				47C6E0F417D1E4F900783ACF /* AppDelegate.m in Sources */,
+				4702722D187A89690084E1B8 /* LoginViewController.m in Sources */,
 				47AE1DE31822E44500826D39 /* NSDate-Utilities.m in Sources */,
 				4733E9ED186594AF0035C26E /* NSString+Utilities.m in Sources */,
 				47C6E10017D1E4FA00783ACF /* ViewController.m in Sources */,

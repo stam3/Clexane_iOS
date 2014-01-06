@@ -14,12 +14,6 @@
 
 #import <Parse/Parse.h>
 
-#define kOpCodeLogin        1
-#define kOpCodeSignup        2
-#define kOpCodeMedicines            100
-#define kOpCodePicklineShow         200
-#define kOpCodeMedicineHistories    300
-
 #define kAPIResponseUnauthorized    401
 
 
@@ -32,7 +26,6 @@
 //#define kAPIMedicineHistoriesCreateURL      @"/medicine_histories.json"
 #define kAPIMedicineHistoriesDestroyURL      @"/medicine_histories/%@.json"
 
-#define kProfilePicklineID  @"pickID"
 
 @interface ModelManager ()
 
@@ -440,8 +433,9 @@
 
 #pragma mark- APIs Calls
 
-- (void)signup:(User*)user {
+- (void)signup:(User*)user delegate:(id<ModelManagerDelegate>) delegate {
     
+    self.delegate = delegate;
     UrlLoader* urlLoader = [[UrlLoader alloc] init];
     urlLoader.delegate = self;
     
@@ -455,6 +449,16 @@
     urlLoader.delegate = self;
     
     NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@", email, password];
+    [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
+}
+
+- (void)login:(User*)user delegate:(id<ModelManagerDelegate>) delegate {
+    
+    self.delegate = delegate;
+    UrlLoader* urlLoader = [[UrlLoader alloc] init];
+    urlLoader.delegate = self;
+    
+    NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@", user.email, user.password];
     [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
 }
 
@@ -540,13 +544,16 @@
     int opCode = [[jsonResult objectForKey:@"opcode"] intValue];
     switch (opCode) {
         case kOpCodeSignup:
-            NSLog(@"sdsd");
+            if (self.delegate)
+                [self.delegate loadingDoneForOpcode:opCode response:response errMsg:[jsonResult objectForKey:@"error_msg"]];
             break;
             // login
         case kOpCodeLogin:
             isLoggedin = YES;
             [[NSUserDefaults standardUserDefaults] setObject:[jsonResult objectForKey:@"picklineId"] forKey:kProfilePicklineID];
             //user auth_token
+            if (self.delegate)
+                [self.delegate loadingDoneForOpcode:opCode response:response errMsg:[jsonResult objectForKey:@"error_msg"]];
             [self loadMedicineData1];
             [self loadRailsPicklineData];
             [self loadRailsHistoryData];

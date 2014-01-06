@@ -18,5 +18,7 @@
 @property (nonatomic, strong) ModelManager* modelManager;
 
 - (void)refreshData;
+- (void)closeSignupController;
+- (void)logout;
 
 @end

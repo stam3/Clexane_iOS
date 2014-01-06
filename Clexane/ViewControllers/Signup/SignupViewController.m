@@ -9,12 +9,15 @@
 #import "SignupViewController.h"
 #import "AppDelegate.h"
 #import "SIAlertView.h"
+#import "ModelManager.h"
 
 @interface SignupViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pswdTextField;
 @property (weak, nonatomic) IBOutlet UITextField *verifyTextField;
+
+@property (strong, nonatomic) User* user;
 
 - (IBAction)signupClicked:(id)sender;
 @end
@@ -40,6 +43,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark- Private Methods
+
+- (User*)user {
+    
+    if (!_user) {
+        _user = [[User alloc] init];
+        _user.email = self.emailTextField.text;
+        _user.password = self.pswdTextField.text;
+    }
+    return _user;
 }
 
 #pragma mark - handlers
@@ -71,12 +86,8 @@
         return;
     }
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    User* user = [[User alloc] init];
-    user.email = self.emailTextField.text;
-    user.password = self.pswdTextField.text;
-//    user.email = self.verifyTextField.text;
     
-    [delegate.modelManager signup:user];
+    [delegate.modelManager signup:self.user delegate:self];
 }
 
 #pragma mark - Table view delegate
@@ -85,6 +96,21 @@
 {
 //    if (indexPath.row == 0)
 //		[self.cellTextField becomeFirstResponder];
+}
+
+#pragma mark - ModelManagerDelegate
+
+- (void)loadingDoneForOpcode:(int)opCode response:(int)response errMsg:(NSString*)msg {
+
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if (opCode == kOpCodeSignup)
+        [delegate.modelManager login:self.user delegate:self];
+    else if (opCode == kOpCodeLogin) {
+    
+        [[NSUserDefaults standardUserDefaults] setObject:self.user.email forKey:kProfileEmailID];
+        [[NSUserDefaults standardUserDefaults] setObject:self.user.password forKey:kProfilePswdID];
+        [delegate closeSignupController];
+    }
 }
 
 @end

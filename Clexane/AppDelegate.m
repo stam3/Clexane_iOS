@@ -28,8 +28,9 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"bgEnterDate"];
    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-    
-    BOOL signedup = NO;
+    BOOL signedup = ([[NSUserDefaults standardUserDefaults] objectForKey:kProfileEmailID] != nil);
+    if (!rails)
+        signedup = YES;
     NSString* storyboardName = @"MainStoryboard";
     if (!signedup)
         storyboardName = @"SignupStoryboard";
@@ -118,6 +119,25 @@
 - (void)refreshData {
     
     [self.modelManager loadData];
+}
+
+- (void)closeSignupController {
+    
+    UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *rootController = [settingsStoryboard instantiateInitialViewController];
+    rootController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    self.window.rootViewController = rootController;
+}
+
+- (void)logout {
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kProfileEmailID];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kProfilePswdID];
+    
+    UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"SignupStoryboard" bundle:nil];
+    UIViewController *rootController = [settingsStoryboard instantiateInitialViewController];
+    rootController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    self.window.rootViewController = rootController;
 }
 
 @end

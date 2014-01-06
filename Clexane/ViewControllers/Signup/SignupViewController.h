@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ModelManager.h"
 
-@interface SignupViewController : UITableViewController
+@interface SignupViewController : UITableViewController <ModelManagerDelegate>
 
 @end
