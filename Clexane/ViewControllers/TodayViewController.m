@@ -40,8 +40,7 @@
 @property (nonatomic, strong) NSArray* todaySortedCombinedArray;
 @property (nonatomic, strong) NSArray* tomorrowSortedCombinedArray;
 @property (nonatomic, strong)  SIAlertView *alertView;
-
-//@property (nonatomic, strong) NSMutableString *htmlStr;
+@property (nonatomic, strong) NSIndexPath* selectedIndexPath;
 
 @end
 
@@ -96,7 +95,10 @@
     
     if (delegate.modelManager.historyMedIDsArray) {
         self.historyData = delegate.modelManager.historyMedIDsArray;
-        [delegate.modelManager loadHistoryData];
+        if (rails)
+            [delegate.modelManager loadRailsHistoryData];
+        else
+            [delegate.modelManager loadHistoryData];
     }
     if (delegate.modelManager.medicineData) {
         self.data = delegate.modelManager.medicineData;
@@ -408,53 +410,80 @@
     
     if ([indexPath section] == 0) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        self.selectedIndexPath = indexPath;
         UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
         
-        MedDatePair* pair = [self.todaySortedCombinedArray objectAtIndex:[indexPath row]];
-        
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            pair.isDone = NO;
-        } else {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            pair.isDone = YES;
-            pair.actualHour = [NSDate date];
-        }
-        
-        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        [delegate.modelManager updateDBWithPair:pair];
-        [tableView reloadData];
-        
-        //update pickline class
-        PicklineComponent picklineComponent;
-        switch (pair.type) {
-            case kHistoryMedType:
-                return;
-            case kHistoryBandageType:
-                picklineComponent = kPicklineComponentBandage;
-                break;
-            case kHistoryBlueVentileType:
-                picklineComponent = kPicklineComponentBlueVentile;
-                break;
-            case kHistoryRedVentileType:
-                picklineComponent = kPicklineComponentRedVentile;
-                break;
-            case kHistoryParparType:
-                picklineComponent = kPicklineComponentParpar;
-                break;
-        }
+            
+            UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure you want to uncheck?"
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"Cancel"
+                                                       destructiveButtonTitle:@"Yes"
+                                                            otherButtonTitles:nil];
+            [actionSheet showInView:self.view];
+        } else
+            [self handleSelectedRow];
+    }
+}
+
+- (void)handleSelectedRow {
     
-        if (pair.isDone)
-             [delegate.modelManager.picklineEntity setLastReplacedDate:pair.actualHour forComponent:picklineComponent];
-        else {
-            NSDate* earlierDate = [delegate.modelManager.picklineEntity getComponentPreviousDateFromNowForComponent:picklineComponent];
-            [delegate.modelManager.picklineEntity setLastReplacedDate:earlierDate forComponent:picklineComponent];
-        }
-        NSDate* nextDate = [delegate.modelManager.picklineEntity getComponentNextDate:picklineComponent];
-        [delegate.modelManager.picklineEntity setLocalNotificationForPicklineComponent:picklineComponent forDate:nextDate];
+    UITableViewCell* cell = [self.table cellForRowAtIndexPath:self.selectedIndexPath];
+    
+    MedDatePair* pair = [self.todaySortedCombinedArray objectAtIndex:[self.selectedIndexPath row]];
+    
+    if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        pair.isDone = NO;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        pair.isDone = YES;
+        pair.actualHour = [NSDate date];
+    }
+    
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [delegate.modelManager updateDBWithPair:pair];
+    [self.table reloadData];
+    
+    //update pickline class
+    PicklineComponent picklineComponent;
+    switch (pair.type) {
+        case kHistoryMedType:
+            return;
+        case kHistoryBandageType:
+            picklineComponent = kPicklineComponentBandage;
+            break;
+        case kHistoryBlueVentileType:
+            picklineComponent = kPicklineComponentBlueVentile;
+            break;
+        case kHistoryRedVentileType:
+            picklineComponent = kPicklineComponentRedVentile;
+            break;
+        case kHistoryParparType:
+            picklineComponent = kPicklineComponentParpar;
+            break;
+    }
+    
+    if (pair.isDone)
+        [delegate.modelManager.picklineEntity setLastReplacedDate:pair.actualHour forComponent:picklineComponent];
+    else {
+        NSDate* earlierDate = [delegate.modelManager.picklineEntity getComponentPreviousDateFromNowForComponent:picklineComponent];
+        [delegate.modelManager.picklineEntity setLastReplacedDate:earlierDate forComponent:picklineComponent];
+    }
+    NSDate* nextDate = [delegate.modelManager.picklineEntity getComponentNextDate:picklineComponent];
+    [delegate.modelManager.picklineEntity setLocalNotificationForPicklineComponent:picklineComponent forDate:nextDate];
+    
+    // save record
+    [self.picklineEntity saveInBackground];
+}
+
+#pragma merk- UIActionSheetDelegate Methods
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex != [actionSheet cancelButtonIndex]) {
         
-        // save record
-        [self.picklineEntity saveInBackground];
+        [self handleSelectedRow];
     }
 }
 

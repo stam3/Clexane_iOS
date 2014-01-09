@@ -23,7 +23,7 @@
 #define kAPIMedicineUpdateURL               @"/medicines/%@.json"
 #define kAPIPicklineURL                     @"/picklines/%@.json"
 #define kAPIMedicineHistoriesURL            @"/medicine_histories.json"
-//#define kAPIMedicineHistoriesCreateURL      @"/medicine_histories.json"
+#define kAPIMedicineDestroyURL              @"/medicines/%@.json"
 #define kAPIMedicineHistoriesDestroyURL      @"/medicine_histories/%@.json"
 
 
@@ -68,7 +68,7 @@
          }];*/
         _alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
         loadFromRails = YES;
-        [self loadData];
+        //[self loadData];
     }
     return self;
 }
@@ -252,9 +252,6 @@
 
 - (void)updateRailsDBWithPair:(MedDatePair*)pair {
     
-    self.alertView.title = @"Updating...";
-    [self.alertView show];
-    
     NSString* params = @"";
     if (pair.isDone) {
         
@@ -276,6 +273,7 @@
         params = [params addURLParameterForKey:kMedicineHistoryIsFirstHourColumn andObjectValue:[NSNumber numberWithBool:pair.isFirstHour]];
         
         [self sendRequest:kAPIMedicineHistoriesURL withParams:params method:kHTTPMethodPost];
+        self.delegate = pair;
     } else {
         
         // resume alert if needed
@@ -286,12 +284,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:kNextNotificationCanceledNotificationName object:nil userInfo:userInfo];
         }
         // remove from DB
-        PFQuery *query = [PFQuery queryWithClassName:self.medicineHistoryClassName];
-        //        PFObject *medicieObject = [query getObjectWithId:pair.pairID];
-        [query getObjectInBackgroundWithId:pair.pairID block:^(PFObject *medicieObject, NSError *error) {
-            [medicieObject delete];
-            [self performSelectorOnMainThread:@selector(dismissAlert) withObject:nil waitUntilDone:NO];
-        }];
+        [self deleteMedicieHistoryRecord: pair];
     }
 
 }
@@ -308,7 +301,7 @@
         //save pair to DB
         PFObject *medicieObject = [PFObject objectWithClassName:self.medicineHistoryClassName];
         if (pair.medicineID) {
-            [medicieObject setObject:pair.medicineID forKey:kMedicineHistoryMedicineIDColumn];
+            [medicieObject setObject:pair.medicineID forKey:kMedicineHistoryMedicineIDColumn1];
             
             // remove alarm if exists
             NSDate* now = [NSDate date];
@@ -320,7 +313,7 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNextNotificationCanceledNotificationName object:pair.date userInfo:userInfo];
             }
         }
-        [medicieObject setObject:[NSNumber numberWithInt:pair.type] forKey:kMedicineHistoryTypeColumn];
+        [medicieObject setObject:[NSNumber numberWithInt:pair.type] forKey:kMedicineHistoryTypeColumn1];
         [medicieObject setObject:[NSDate date] forKey:kMedicineHistoryActualHourColumn];
         [medicieObject setObject:[NSNumber numberWithBool:pair.isFirstHour] forKey:kMedicineHistoryIsFirstHourColumn];
 
@@ -365,18 +358,29 @@
 
 - (void)deleteMedicine:(MedicineEntity*)entity {
     
-    // remove from DB
-    self.alertView.title = @"Deleting...";
-    [self.alertView show];
-    
-    // delete alerts
-    [MainViewController cancelAllLocalNotificationsForID:kMedicineNotificationID andUniqueID:entity.medicineID];
-    // delete from DB
-    PFQuery *query = [PFQuery queryWithClassName:self.medicineClassName];
-    [query getObjectInBackgroundWithId:entity.medicineID block:^(PFObject *medicieObject, NSError *error) {
-        [medicieObject delete];
-        [self performSelectorOnMainThread:@selector(dismissAlert) withObject:nil waitUntilDone:NO];
-    }];
+    if (rails) {
+        
+//        SIAlertView* alertView = [[SIAlertView alloc] initWithTitle:@"Error" andMessage:@"not supported yet..."];
+//        [alertView addButtonWithTitle:@"OK"
+//                                 type:SIAlertViewButtonTypeDefault
+//                              handler:nil];
+//        [alertView show];
+        [self deleteMedicieRecord:entity];
+        
+    } else {
+        // remove from DB
+        self.alertView.title = @"Deleting...";
+        [self.alertView show];
+        
+        // delete alerts
+        [MainViewController cancelAllLocalNotificationsForID:kMedicineNotificationID andUniqueID:entity.medicineID];
+        // delete from DB
+        PFQuery *query = [PFQuery queryWithClassName:self.medicineClassName];
+        [query getObjectInBackgroundWithId:entity.medicineID block:^(PFObject *medicieObject, NSError *error) {
+            [medicieObject delete];
+            [self performSelectorOnMainThread:@selector(dismissAlert) withObject:nil waitUntilDone:NO];
+        }];
+    }
 }
 
 - (void)saveMedicineInDB:(MedicineEntity*)medicineEntity isNewRecord:(BOOL)isNewRecord {
@@ -431,6 +435,16 @@
 
 }
 
+#pragma mark- Private Calls
+
+- (User*)getLoggedinUser {
+    
+    User* user = [[User alloc] init];
+    user.password = [[NSUserDefaults standardUserDefaults] objectForKey:kProfilePswdID];
+    user.email = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileEmailID];
+    return user;
+}
+
 #pragma mark- APIs Calls
 
 - (void)signup:(User*)user delegate:(id<ModelManagerDelegate>) delegate {
@@ -460,6 +474,11 @@
     
     NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@", user.email, user.password];
     [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
+}
+
+- (void)loginExistingUserWithDelegate:(id<ModelManagerDelegate>) delegate {
+    
+    [self login:[self getLoggedinUser] delegate:delegate];
 }
 
 - (void)loadRailsPicklineData {
@@ -541,19 +560,18 @@
         [alertView show];
         return;
     }
+    id obj = nil;
     int opCode = [[jsonResult objectForKey:@"opcode"] intValue];
     switch (opCode) {
         case kOpCodeSignup:
-            if (self.delegate)
-                [self.delegate loadingDoneForOpcode:opCode response:response errMsg:[jsonResult objectForKey:@"error_msg"]];
+//            if (self.delegate)
+//                [self.delegate loadingDoneForOpcode:opCode response:response errMsg:[jsonResult objectForKey:@"error_msg"]];
             break;
             // login
         case kOpCodeLogin:
             isLoggedin = YES;
             [[NSUserDefaults standardUserDefaults] setObject:[jsonResult objectForKey:@"picklineId"] forKey:kProfilePicklineID];
             //user auth_token
-            if (self.delegate)
-                [self.delegate loadingDoneForOpcode:opCode response:response errMsg:[jsonResult objectForKey:@"error_msg"]];
             [self loadMedicineData1];
             [self loadRailsPicklineData];
             [self loadRailsHistoryData];
@@ -567,9 +585,18 @@
         case kOpCodeMedicineHistories:
             [self extractMedicineHistoriesData:jsonResult];
             break;
+        case kOpCodeMedicineCreate:
+            obj = [[MedicineEntity alloc] initWithDictionary:[jsonResult objectForKey:@"medicine"]];
+            break;
+        case kOpCodeMedicineHistorieCreate:
+            obj = [[MedDatePair alloc] initWithDictionary:[jsonResult objectForKey:@"medicine_history"]];
+            break;
         default:
             break;
     }
+    if (self.delegate)
+        [self.delegate loadingDoneForOpcode:opCode response:response object:obj errMsg:[jsonResult objectForKey:@"error_msg"]];
+    self.delegate = nil;
 }
 
 - (void)urlLoadingError {
@@ -599,7 +626,19 @@
     
     NSString* params = [self getMedicineRequestParamsForEntity:entity];
     [self sendRequest:kAPIMedicineURL withParams:params method:kHTTPMethodPost];
+    self.delegate = entity;
 }
+
+- (void)deleteMedicieRecord:(MedicineEntity*)entity {
+    
+    [self sendRequest:[NSString stringWithFormat:kAPIMedicineDestroyURL, entity.medicineID]  withParams:nil method:kHTTPMethodDelete];
+}
+
+- (void)deleteMedicieHistoryRecord:(MedDatePair*)entity {
+    
+    [self sendRequest:[NSString stringWithFormat:kAPIMedicineHistoriesDestroyURL, entity.pairID]  withParams:nil method:kHTTPMethodDelete];
+}
+
 
 - (NSString*)getMedicineRequestParamsForEntity:(MedicineEntity*)entity {
     

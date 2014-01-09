@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ModelManager.h"
+//#import "AppDelegate.h"
+#import "ModelManagerDelegate.h"
+
 
 @interface LoginViewController : UITableViewController <ModelManagerDelegate>
 

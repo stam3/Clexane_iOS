@@ -24,9 +24,11 @@
     [Parse setApplicationId:@"feNv8I2417EOVEKVNuQz2fYV4VUEMIhDMlSyMsqi"
                   clientKey:@"LnBI4k0D17NOBpzgZPIe9zMVEU2g4YsKhEyuUV65"];
     
+    
     self.modelManager = [[ModelManager alloc] init];
+   
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"bgEnterDate"];
-   [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
     BOOL signedup = ([[NSUserDefaults standardUserDefaults] objectForKey:kProfileEmailID] != nil);
     if (!rails)
@@ -34,6 +36,8 @@
     NSString* storyboardName = @"MainStoryboard";
     if (!signedup)
         storyboardName = @"SignupStoryboard";
+    else
+        [self.modelManager loginExistingUserWithDelegate:nil];
     
     UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     UIViewController *rootController = [settingsStoryboard instantiateInitialViewController];
@@ -133,6 +137,7 @@
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kProfileEmailID];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kProfilePswdID];
+    [[NSUserDefaults standardUserDefaults]  synchronize];
     
     UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"SignupStoryboard" bundle:nil];
     UIViewController *rootController = [settingsStoryboard instantiateInitialViewController];

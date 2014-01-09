@@ -58,11 +58,9 @@
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:[UIApplication sharedApplication]];
 
-   // self.shotsArray = [PFObject objectWithClassName:@"TestObject"];
     self.className = @"ShotsObject";
     if (debug) {
         self.className = @"TestObject";
-        //objID = @"6jdYOeNc4V";
     }
     
     self.alertView = [[SIAlertView alloc] initWithTitle:@"Loading..." andMessage:@"Please Wait"];

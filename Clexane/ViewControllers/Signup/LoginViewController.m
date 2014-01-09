@@ -94,8 +94,8 @@
 
 #pragma mark - ModelManagerDelegate
 
-- (void)loadingDoneForOpcode:(int)opCode response:(int)response errMsg:(NSString*)msg {
-    
+- (void)loadingDoneForOpcode:(int)opCode response:(int)response object:(id)obj errMsg:(NSString*)msg {
+
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if (opCode == kOpCodeLogin) {
         

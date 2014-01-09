@@ -39,7 +39,7 @@
 	[req addValue:0 forHTTPHeaderField:@"Content-Length"];
 	[req setHTTPMethod:@"GET"];
     NSMutableString* cookieStringToSet = [[NSMutableString alloc] init];
-    NSArray *cookiesToSet = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"http://0.0.0.0:3000"]];
+    NSArray *cookiesToSet = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:kAPIBaseURL]];
     for (NSHTTPCookie *cookie in cookiesToSet) {
         [cookieStringToSet appendFormat:@"%@=%@;", cookie.name, cookie.value];
     }
@@ -109,7 +109,7 @@
     //[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSMutableString* cookieStringToSet = [[NSMutableString alloc] init];
-    NSArray *cookiesToSet = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"http://0.0.0.0:3000"]];
+    NSArray *cookiesToSet = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:kAPIBaseURL]];
     for (NSHTTPCookie *cookie in cookiesToSet) {
         [cookieStringToSet appendFormat:@"%@=%@;", cookie.name, cookie.value];
     }
@@ -261,7 +261,7 @@ didReceiveResponse:(NSURLResponse *) response {
 //    }
     
     NSMutableString* cookieStringToSet = [[NSMutableString alloc] init];
-    NSArray *cookiesToSet = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"http://0.0.0.0:3000"] ];
+    NSArray *cookiesToSet = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:kAPIBaseURL] ];
     for (NSHTTPCookie *cookie in cookiesToSet) {
         [cookieStringToSet appendFormat:@"%@=%@;", cookie.name, cookie.value];
     }

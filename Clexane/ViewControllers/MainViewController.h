@@ -48,7 +48,7 @@ typedef enum {
     kDateFormatterNoTimeNoYearType
 } DateFormatterType;
 
-@interface MainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 + (NSString*)stringFromDate:(NSDate*)date withFormat:(int)formatType;
 + (NSString*)stringFromDate:(NSDate*)date withFormat:(int)formatType formatted:(BOOL)useTexts;

@@ -20,9 +20,9 @@
     if (self) {
         self.isDone = YES;
         self.pairID = record.objectId;
-        self.medicineID = [record objectForKey:kMedicineHistoryMedicineIDColumn];
+        self.medicineID = [record objectForKey:kMedicineHistoryMedicineIDColumn1];
         self.actualHour = [record objectForKey:kMedicineHistoryActualHourColumn];
-        self.type = [[record objectForKey:kMedicineHistoryTypeColumn] intValue];
+        self.type = [[record objectForKey:kMedicineHistoryTypeColumn1] intValue];
         self.isFirstHour = [[record objectForKey:kMedicineHistoryIsFirstHourColumn] boolValue];
     }
     return self;
@@ -53,6 +53,13 @@
         
         _date = [[NSDate date] dateWithTimeFrom:newDate];
     }
+}
+
+#pragma mark- ModelManagerDelegate methods
+
+- (void)loadingDoneForOpcode:(int)opCode response:(int)response object:(id)obj errMsg:(NSString*)msg {
+    
+    self.pairID = ((MedDatePair*)obj).pairID;
 }
 
 @end
