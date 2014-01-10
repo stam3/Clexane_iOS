@@ -220,7 +220,7 @@
                                     <tableViewSection id="ruW-aw-cxo">
                                         <cells>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="igL-eu-sGI">
-                                                <rect key="frame" x="0.0" y="99" width="320" height="44"/>
+                                                <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="igL-eu-sGI" id="Rna-Ec-NMd">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -243,7 +243,7 @@
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="1oz-RS-vQt">
-                                                <rect key="frame" x="0.0" y="143" width="320" height="44"/>
+                                                <rect key="frame" x="0.0" y="79" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1oz-RS-vQt" id="Uqz-O7-kRe">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -266,7 +266,7 @@
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hhY-Bp-qA7">
-                                                <rect key="frame" x="0.0" y="187" width="320" height="44"/>
+                                                <rect key="frame" x="0.0" y="123" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hhY-Bp-qA7" id="akC-nR-unY">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -305,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QbO-3g-Ycn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-687" y="-1441"/>
+            <point key="canvasLocation" x="-1041" y="-1565"/>
         </scene>
         <!--Pickline Table View Controller - פיקליין-->
         <scene sceneID="1rb-MI-277">

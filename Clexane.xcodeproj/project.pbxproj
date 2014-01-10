@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4702722D187A89690084E1B8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4702722C187A89690084E1B8 /* LoginViewController.m */; };
 		4713FCFA18116C9F00DA561B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCF918116C9F00DA561B /* DatePickerViewController.m */; };
 		4713FCFD1812D01200DA561B /* MedicineDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCFC1812D01200DA561B /* MedicineDetailsViewController.m */; };
 		4733E9ED186594AF0035C26E /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733E9EC186594AF0035C26E /* NSString+Utilities.m */; };
@@ -20,7 +21,9 @@
 		473F98C117D2584300605D1E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C017D2584300605D1E /* StoreKit.framework */; };
 		473F98C317D2587300605D1E /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C217D2587300605D1E /* libz.1.1.3.dylib */; };
 		473F98C517D2587D00605D1E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C417D2587D00605D1E /* MobileCoreServices.framework */; };
-		474661741877541F00D6C027 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474661731877541F00D6C027 /* SignupViewController.m */; };
+		474661771877F7CE00D6C027 /* SignupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 474661751877F7CE00D6C027 /* SignupStoryboard.storyboard */; };
+		4746617B187802FC00D6C027 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4746617A187802FC00D6C027 /* SignupViewController.m */; };
+		4746617E18785C3800D6C027 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4746617D18785C3800D6C027 /* User.m */; };
 		47518082181BCFF4005BD86C /* MedDatePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 47518081181BCFF4005BD86C /* MedDatePair.m */; };
 		47518086181C0821005BD86C /* PicklineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 47518085181C0821005BD86C /* PicklineEntity.m */; };
 		475F0BC618427E1F00676DD7 /* UrlLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 475F0BC518427E1F00676DD7 /* UrlLoader.m */; };
@@ -49,10 +52,58 @@
 		47D1006A18281FAB00109CAC /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 47D1006518281FAB00109CAC /* SIAlertView.bundle */; };
 		47D1006B18281FAB00109CAC /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D1006718281FAB00109CAC /* SIAlertView.m */; };
 		47D1006C18281FAB00109CAC /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D1006918281FAB00109CAC /* UIWindow+SIUtils.m */; };
+		47DA541C187D3A3C00CF318A /* UrlLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 475F0BC518427E1F00676DD7 /* UrlLoader.m */; };
+		47DA541D187D3A3C00CF318A /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BD49591819B6DB008CCCFE /* TodayViewController.m */; };
+		47DA541E187D3A3C00CF318A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0EF17D1E4F900783ACF /* main.m */; };
+		47DA541F187D3A3C00CF318A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0F317D1E4F900783ACF /* AppDelegate.m */; };
+		47DA5420187D3A3C00CF318A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4702722C187A89690084E1B8 /* LoginViewController.m */; };
+		47DA5421187D3A3C00CF318A /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1DE21822E44500826D39 /* NSDate-Utilities.m */; };
+		47DA5422187D3A3C00CF318A /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733E9EC186594AF0035C26E /* NSString+Utilities.m */; };
+		47DA5423187D3A3C00CF318A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0FF17D1E4FA00783ACF /* ViewController.m */; };
+		47DA5424187D3A3C00CF318A /* AddOrEditMedicineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478E612C1811283700599906 /* AddOrEditMedicineViewController.m */; };
+		47DA5425187D3A3C00CF318A /* ShotEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E10C17D1E98800783ACF /* ShotEntity.m */; };
+		47DA5426187D3A3C00CF318A /* MedDatePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 47518081181BCFF4005BD86C /* MedDatePair.m */; };
+		47DA5427187D3A3C00CF318A /* PicklineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 47518085181C0821005BD86C /* PicklineEntity.m */; };
+		47DA5428187D3A3C00CF318A /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D1006718281FAB00109CAC /* SIAlertView.m */; };
+		47DA5429187D3A3C00CF318A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4746617D18785C3800D6C027 /* User.m */; };
+		47DA542A187D3A3C00CF318A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F5DE8F1809A292003D7FD3 /* MainViewController.m */; };
+		47DA542B187D3A3C00CF318A /* MedicineMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478E6126181120CF00599906 /* MedicineMainViewController.m */; };
+		47DA542C187D3A3C00CF318A /* MedicineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 478E6129181124DA00599906 /* MedicineEntity.m */; };
+		47DA542D187D3A3C00CF318A /* ModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BD49561819AA1F008CCCFE /* ModelManager.m */; };
+		47DA542E187D3A3C00CF318A /* PicklineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1DDB181D895A00826D39 /* PicklineTableViewController.m */; };
+		47DA542F187D3A3C00CF318A /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCF918116C9F00DA561B /* DatePickerViewController.m */; };
+		47DA5430187D3A3C00CF318A /* NudnikViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BD495218179856008CCCFE /* NudnikViewController.m */; };
+		47DA5431187D3A3C00CF318A /* MedicineDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCFC1812D01200DA561B /* MedicineDetailsViewController.m */; };
+		47DA5432187D3A3C00CF318A /* UIWindow+SIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D1006918281FAB00109CAC /* UIWindow+SIUtils.m */; };
+		47DA5433187D3A3C00CF318A /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4746617A187802FC00D6C027 /* SignupViewController.m */; };
+		47DA5435187D3A3C00CF318A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C417D2587D00605D1E /* MobileCoreServices.framework */; };
+		47DA5436187D3A3C00CF318A /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C217D2587300605D1E /* libz.1.1.3.dylib */; };
+		47DA5437187D3A3C00CF318A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98C017D2584300605D1E /* StoreKit.framework */; };
+		47DA5438187D3A3C00CF318A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98BE17D2583C00605D1E /* CoreLocation.framework */; };
+		47DA5439187D3A3C00CF318A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98BC17D257DD00605D1E /* SystemConfiguration.framework */; };
+		47DA543A187D3A3C00CF318A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98BA17D257D400605D1E /* Security.framework */; };
+		47DA543B187D3A3C00CF318A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98B817D257D000605D1E /* QuartzCore.framework */; };
+		47DA543C187D3A3C00CF318A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C6E0E717D1E4F900783ACF /* CoreGraphics.framework */; };
+		47DA543D187D3A3C00CF318A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98B617D257BD00605D1E /* CFNetwork.framework */; };
+		47DA543E187D3A3C00CF318A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98B417D257B600605D1E /* AudioToolbox.framework */; };
+		47DA543F187D3A3C00CF318A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C6E0E317D1E4F900783ACF /* UIKit.framework */; };
+		47DA5440187D3A3C00CF318A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C6E0E517D1E4F900783ACF /* Foundation.framework */; };
+		47DA5441187D3A3C00CF318A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473F98B217D257A100605D1E /* Parse.framework */; };
+		47DA5443187D3A3C00CF318A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0EC17D1E4F900783ACF /* InfoPlist.strings */; };
+		47DA5444187D3A3C00CF318A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0F517D1E4F900783ACF /* Default.png */; };
+		47DA5445187D3A3C00CF318A /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 47D1006518281FAB00109CAC /* SIAlertView.bundle */; };
+		47DA5446187D3A3C00CF318A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0F717D1E4F900783ACF /* Default@2x.png */; };
+		47DA5447187D3A3C00CF318A /* SignupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 474661751877F7CE00D6C027 /* SignupStoryboard.storyboard */; };
+		47DA5448187D3A3C00CF318A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0F917D1E4F900783ACF /* Default-568h@2x.png */; };
+		47DA5449187D3A3C00CF318A /* notificationSound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 47BD494F18166099008CCCFE /* notificationSound.caf */; };
+		47DA544A187D3A3C00CF318A /* bell_chimes.caf in Resources */ = {isa = PBXBuildFile; fileRef = 47AE1DD7181CEC0000826D39 /* bell_chimes.caf */; };
+		47DA544B187D3A3C00CF318A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0FB17D1E4FA00783ACF /* MainStoryboard.storyboard */; };
 		47F5DE901809A292003D7FD3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F5DE8F1809A292003D7FD3 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4702722B187A89690084E1B8 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/Signup/LoginViewController.h; sourceTree = "<group>"; };
+		4702722C187A89690084E1B8 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/Signup/LoginViewController.m; sourceTree = "<group>"; };
 		4713FCF818116C9F00DA561B /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerViewController.h; path = ViewControllers/DatePickerViewController.h; sourceTree = "<group>"; };
 		4713FCF918116C9F00DA561B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerViewController.m; path = ViewControllers/DatePickerViewController.m; sourceTree = "<group>"; };
 		4713FCFB1812D01200DA561B /* MedicineDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedicineDetailsViewController.h; path = ViewControllers/MedicineDetailsViewController.h; sourceTree = "<group>"; };
@@ -69,8 +120,11 @@
 		473F98C017D2584300605D1E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		473F98C217D2587300605D1E /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		473F98C417D2587D00605D1E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		474661721877541F00D6C027 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ViewControllers/SignupViewController.h; sourceTree = "<group>"; };
-		474661731877541F00D6C027 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ViewControllers/SignupViewController.m; sourceTree = "<group>"; };
+		474661761877F7CE00D6C027 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/SignupStoryboard.storyboard; sourceTree = "<group>"; };
+		47466179187802FC00D6C027 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ViewControllers/Signup/SignupViewController.h; sourceTree = "<group>"; };
+		4746617A187802FC00D6C027 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ViewControllers/Signup/SignupViewController.m; sourceTree = "<group>"; };
+		4746617C18785C3800D6C027 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Entities/User.h; sourceTree = "<group>"; };
+		4746617D18785C3800D6C027 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Entities/User.m; sourceTree = "<group>"; };
 		47518080181BCFF4005BD86C /* MedDatePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedDatePair.h; path = Entities/MedDatePair.h; sourceTree = "<group>"; };
 		47518081181BCFF4005BD86C /* MedDatePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MedDatePair.m; path = Entities/MedDatePair.m; sourceTree = "<group>"; };
 		47518084181C0821005BD86C /* PicklineEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PicklineEntity.h; path = Entities/PicklineEntity.h; sourceTree = "<group>"; };
@@ -118,6 +172,9 @@
 		47D1006718281FAB00109CAC /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		47D1006818281FAB00109CAC /* UIWindow+SIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SIUtils.h"; sourceTree = "<group>"; };
 		47D1006918281FAB00109CAC /* UIWindow+SIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SIUtils.m"; sourceTree = "<group>"; };
+		47DA544F187D3A3C00CF318A /* Clexane Rails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clexane Rails.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47DA5450187D3A3C00CF318A /* Clexane Rails-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Clexane Rails-Info.plist"; path = "/Users/davidsayag/Documents/Devel/XcodeProjects/Per/Clexane/Clexane Rails-Info.plist"; sourceTree = "<absolute>"; };
+		47DA5453187ECF8B00CF318A /* ModelManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelManagerDelegate.h; path = Protocols/ModelManagerDelegate.h; sourceTree = "<group>"; };
 		47F5DE8E1809A292003D7FD3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ViewControllers/MainViewController.h; sourceTree = "<group>"; };
 		47F5DE8F1809A292003D7FD3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ViewControllers/MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,9 +200,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		47DA5434187D3A3C00CF318A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47DA5435187D3A3C00CF318A /* MobileCoreServices.framework in Frameworks */,
+				47DA5436187D3A3C00CF318A /* libz.1.1.3.dylib in Frameworks */,
+				47DA5437187D3A3C00CF318A /* StoreKit.framework in Frameworks */,
+				47DA5438187D3A3C00CF318A /* CoreLocation.framework in Frameworks */,
+				47DA5439187D3A3C00CF318A /* SystemConfiguration.framework in Frameworks */,
+				47DA543A187D3A3C00CF318A /* Security.framework in Frameworks */,
+				47DA543B187D3A3C00CF318A /* QuartzCore.framework in Frameworks */,
+				47DA543C187D3A3C00CF318A /* CoreGraphics.framework in Frameworks */,
+				47DA543D187D3A3C00CF318A /* CFNetwork.framework in Frameworks */,
+				47DA543E187D3A3C00CF318A /* AudioToolbox.framework in Frameworks */,
+				47DA543F187D3A3C00CF318A /* UIKit.framework in Frameworks */,
+				47DA5440187D3A3C00CF318A /* Foundation.framework in Frameworks */,
+				47DA5441187D3A3C00CF318A /* Parse.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		474661781877F80B00D6C027 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				47466179187802FC00D6C027 /* SignupViewController.h */,
+				4746617A187802FC00D6C027 /* SignupViewController.m */,
+				4702722B187A89690084E1B8 /* LoginViewController.h */,
+				4702722C187A89690084E1B8 /* LoginViewController.m */,
+			);
+			name = Signup;
+			sourceTree = "<group>";
+		};
 		47518083181C07FB005BD86C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +245,8 @@
 				47518081181BCFF4005BD86C /* MedDatePair.m */,
 				47518084181C0821005BD86C /* PicklineEntity.h */,
 				47518085181C0821005BD86C /* PicklineEntity.m */,
+				4746617C18785C3800D6C027 /* User.h */,
+				4746617D18785C3800D6C027 /* User.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -205,6 +295,7 @@
 				47C6E0E917D1E4F900783ACF /* Clexane */,
 				47C6E0E217D1E4F900783ACF /* Frameworks */,
 				47C6E0E017D1E4F900783ACF /* Products */,
+				47DA5450187D3A3C00CF318A /* Clexane Rails-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				47C6E0DF17D1E4F900783ACF /* Clexane.app */,
+				47DA544F187D3A3C00CF318A /* Clexane Rails.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,6 +322,7 @@
 		47C6E0E917D1E4F900783ACF /* Clexane */ = {
 			isa = PBXGroup;
 			children = (
+				47DA5451187E80AD00CF318A /* Protocols */,
 				475F0BC318427E0900676DD7 /* Utils */,
 				47D1006418281F9B00109CAC /* SIAlertView */,
 				47AE1DDD1822E41600826D39 /* Utilities */,
@@ -242,6 +335,7 @@
 				47C6E0F317D1E4F900783ACF /* AppDelegate.m */,
 				47C6E0FB17D1E4FA00783ACF /* MainStoryboard.storyboard */,
 				47C6E0EA17D1E4F900783ACF /* Supporting Files */,
+				474661751877F7CE00D6C027 /* SignupStoryboard.storyboard */,
 			);
 			path = Clexane;
 			sourceTree = "<group>";
@@ -272,9 +366,18 @@
 			name = SIAlertView;
 			sourceTree = "<group>";
 		};
+		47DA5451187E80AD00CF318A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				47DA5453187ECF8B00CF318A /* ModelManagerDelegate.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		47F5DE911809A2E1003D7FD3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				474661781877F80B00D6C027 /* Signup */,
 				47C6E0FE17D1E4FA00783ACF /* ViewController.h */,
 				47C6E0FF17D1E4FA00783ACF /* ViewController.m */,
 				47F5DE8E1809A292003D7FD3 /* MainViewController.h */,
@@ -293,8 +396,6 @@
 				47BD49591819B6DB008CCCFE /* TodayViewController.m */,
 				47AE1DDA181D895A00826D39 /* PicklineTableViewController.h */,
 				47AE1DDB181D895A00826D39 /* PicklineTableViewController.m */,
-				474661721877541F00D6C027 /* SignupViewController.h */,
-				474661731877541F00D6C027 /* SignupViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -319,6 +420,23 @@
 			productReference = 47C6E0DF17D1E4F900783ACF /* Clexane.app */;
 			productType = "com.apple.product-type.application";
 		};
+		47DA541A187D3A3C00CF318A /* ClexaneRails */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47DA544C187D3A3C00CF318A /* Build configuration list for PBXNativeTarget "ClexaneRails" */;
+			buildPhases = (
+				47DA541B187D3A3C00CF318A /* Sources */,
+				47DA5434187D3A3C00CF318A /* Frameworks */,
+				47DA5442187D3A3C00CF318A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClexaneRails;
+			productName = Clexane;
+			productReference = 47DA544F187D3A3C00CF318A /* Clexane Rails.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -341,6 +459,7 @@
 			projectRoot = "";
 			targets = (
 				47C6E0DE17D1E4F900783ACF /* Clexane */,
+				47DA541A187D3A3C00CF318A /* ClexaneRails */,
 			);
 		};
 /* End PBXProject section */
@@ -354,10 +473,27 @@
 				47C6E0F617D1E4F900783ACF /* Default.png in Resources */,
 				47D1006A18281FAB00109CAC /* SIAlertView.bundle in Resources */,
 				47C6E0F817D1E4F900783ACF /* Default@2x.png in Resources */,
+				474661771877F7CE00D6C027 /* SignupStoryboard.storyboard in Resources */,
 				47C6E0FA17D1E4F900783ACF /* Default-568h@2x.png in Resources */,
 				47BD495018166099008CCCFE /* notificationSound.caf in Resources */,
 				47AE1DD9181CEC0000826D39 /* bell_chimes.caf in Resources */,
 				47C6E0FD17D1E4FA00783ACF /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47DA5442187D3A3C00CF318A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47DA5443187D3A3C00CF318A /* InfoPlist.strings in Resources */,
+				47DA5444187D3A3C00CF318A /* Default.png in Resources */,
+				47DA5445187D3A3C00CF318A /* SIAlertView.bundle in Resources */,
+				47DA5446187D3A3C00CF318A /* Default@2x.png in Resources */,
+				47DA5447187D3A3C00CF318A /* SignupStoryboard.storyboard in Resources */,
+				47DA5448187D3A3C00CF318A /* Default-568h@2x.png in Resources */,
+				47DA5449187D3A3C00CF318A /* notificationSound.caf in Resources */,
+				47DA544A187D3A3C00CF318A /* bell_chimes.caf in Resources */,
+				47DA544B187D3A3C00CF318A /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +508,7 @@
 				47BD495A1819B6DB008CCCFE /* TodayViewController.m in Sources */,
 				47C6E0F017D1E4F900783ACF /* main.m in Sources */,
 				47C6E0F417D1E4F900783ACF /* AppDelegate.m in Sources */,
-				474661741877541F00D6C027 /* SignupViewController.m in Sources */,
+				4702722D187A89690084E1B8 /* LoginViewController.m in Sources */,
 				47AE1DE31822E44500826D39 /* NSDate-Utilities.m in Sources */,
 				4733E9ED186594AF0035C26E /* NSString+Utilities.m in Sources */,
 				47C6E10017D1E4FA00783ACF /* ViewController.m in Sources */,
@@ -381,6 +517,7 @@
 				47518082181BCFF4005BD86C /* MedDatePair.m in Sources */,
 				47518086181C0821005BD86C /* PicklineEntity.m in Sources */,
 				47D1006B18281FAB00109CAC /* SIAlertView.m in Sources */,
+				4746617E18785C3800D6C027 /* User.m in Sources */,
 				47F5DE901809A292003D7FD3 /* MainViewController.m in Sources */,
 				478E6127181120CF00599906 /* MedicineMainViewController.m in Sources */,
 				478E612A181124DA00599906 /* MedicineEntity.m in Sources */,
@@ -390,12 +527,52 @@
 				47BD495318179856008CCCFE /* NudnikViewController.m in Sources */,
 				4713FCFD1812D01200DA561B /* MedicineDetailsViewController.m in Sources */,
 				47D1006C18281FAB00109CAC /* UIWindow+SIUtils.m in Sources */,
+				4746617B187802FC00D6C027 /* SignupViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47DA541B187D3A3C00CF318A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47DA541C187D3A3C00CF318A /* UrlLoader.m in Sources */,
+				47DA541D187D3A3C00CF318A /* TodayViewController.m in Sources */,
+				47DA541E187D3A3C00CF318A /* main.m in Sources */,
+				47DA541F187D3A3C00CF318A /* AppDelegate.m in Sources */,
+				47DA5420187D3A3C00CF318A /* LoginViewController.m in Sources */,
+				47DA5421187D3A3C00CF318A /* NSDate-Utilities.m in Sources */,
+				47DA5422187D3A3C00CF318A /* NSString+Utilities.m in Sources */,
+				47DA5423187D3A3C00CF318A /* ViewController.m in Sources */,
+				47DA5424187D3A3C00CF318A /* AddOrEditMedicineViewController.m in Sources */,
+				47DA5425187D3A3C00CF318A /* ShotEntity.m in Sources */,
+				47DA5426187D3A3C00CF318A /* MedDatePair.m in Sources */,
+				47DA5427187D3A3C00CF318A /* PicklineEntity.m in Sources */,
+				47DA5428187D3A3C00CF318A /* SIAlertView.m in Sources */,
+				47DA5429187D3A3C00CF318A /* User.m in Sources */,
+				47DA542A187D3A3C00CF318A /* MainViewController.m in Sources */,
+				47DA542B187D3A3C00CF318A /* MedicineMainViewController.m in Sources */,
+				47DA542C187D3A3C00CF318A /* MedicineEntity.m in Sources */,
+				47DA542D187D3A3C00CF318A /* ModelManager.m in Sources */,
+				47DA542E187D3A3C00CF318A /* PicklineTableViewController.m in Sources */,
+				47DA542F187D3A3C00CF318A /* DatePickerViewController.m in Sources */,
+				47DA5430187D3A3C00CF318A /* NudnikViewController.m in Sources */,
+				47DA5431187D3A3C00CF318A /* MedicineDetailsViewController.m in Sources */,
+				47DA5432187D3A3C00CF318A /* UIWindow+SIUtils.m in Sources */,
+				47DA5433187D3A3C00CF318A /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		474661751877F7CE00D6C027 /* SignupStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				474661761877F7CE00D6C027 /* en */,
+			);
+			name = SignupStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
 		47C6E0EC17D1E4F900783ACF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -495,6 +672,38 @@
 			};
 			name = Release;
 		};
+		47DA544D187D3A3C00CF318A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clexane/Clexane-Prefix.pch";
+				INFOPLIST_FILE = "Clexane Rails-Info.plist";
+				PRODUCT_NAME = "Clexane Rails";
+				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		47DA544E187D3A3C00CF318A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clexane/Clexane-Prefix.pch";
+				INFOPLIST_FILE = "Clexane Rails-Info.plist";
+				PRODUCT_NAME = "Clexane Rails";
+				USER_HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)\"";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -512,6 +721,15 @@
 			buildConfigurations = (
 				47C6E10417D1E4FA00783ACF /* Debug */,
 				47C6E10517D1E4FA00783ACF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47DA544C187D3A3C00CF318A /* Build configuration list for PBXNativeTarget "ClexaneRails" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47DA544D187D3A3C00CF318A /* Debug */,
+				47DA544E187D3A3C00CF318A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

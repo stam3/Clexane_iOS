@@ -14,7 +14,6 @@
 
 @interface MedicineEntity ()
 
-
 @end
 
 @implementation MedicineEntity
@@ -473,6 +472,13 @@
     
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     [delegate.modelManager updateMedicieRecord:self];
+}
+
+#pragma mark- ModelManagerDelegate methods
+
+- (void)loadingDoneForOpcode:(int)opCode response:(int)response object:(id)obj errMsg:(NSString*)msg {
+
+    self.medicineID = ((MedicineEntity*)obj).medicineID;
 }
 
 @end

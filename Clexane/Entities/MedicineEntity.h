@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
+#import "ModelManagerDelegate.h"
+
 #define kNameColumn                     @"name"
 #define kIsSpecificDaysColumn           @"isSpecificDays"
 #define kSpecificDaysColumn             @"specificDays"
@@ -16,14 +18,10 @@
 #define kFirstHourColumn                @"firstHour"
 #define kSecondHourColumn               @"secondHour"
 #define kCanceledNotificationDateColumn       @"canceledNotificationDate"
-
-//#define kFirstRepeatIntervalsColumn           @"firstRepeatIntervals"
-//#define kFirstFireDatesColumn                 @"firstHourFireDates"
-//#define kSecondRepeatIntervalsColumn     @"secondRepeatIntervals"
-//#define kSecondFireDatesColumn           @"secondHourFireDates"
 #define kDaysOffsetStartDateColumn          @"daysOffsetStartDate"
 
-@interface MedicineEntity : NSObject
+
+@interface MedicineEntity : NSObject <ModelManagerDelegate>
 
 @property (nonatomic, strong) NSString* medicineID;
 @property (nonatomic, strong) NSString* name;

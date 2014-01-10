@@ -14,23 +14,18 @@
 
 #import <Parse/Parse.h>
 
-#define kOpCodeLogin        1
-#define kOpCodeMedicines            100
-#define kOpCodePicklineShow         200
-#define kOpCodeMedicineHistories    300
-
 #define kAPIResponseUnauthorized    401
 
 
 #define kAPILoginURL                        @"/login.json"
+#define kAPISignupURL                        @"/signup.json"
 #define kAPIMedicineURL                     @"/medicines.json"
 #define kAPIMedicineUpdateURL               @"/medicines/%@.json"
 #define kAPIPicklineURL                     @"/picklines/%@.json"
 #define kAPIMedicineHistoriesURL            @"/medicine_histories.json"
-//#define kAPIMedicineHistoriesCreateURL      @"/medicine_histories.json"
+#define kAPIMedicineDestroyURL              @"/medicines/%@.json"
 #define kAPIMedicineHistoriesDestroyURL      @"/medicine_histories/%@.json"
 
-#define kProfilePicklineID  @"pickID"
 
 @interface ModelManager ()
 
@@ -73,7 +68,7 @@
          }];*/
         _alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
         loadFromRails = YES;
-        [self loadData];
+        //[self loadData];
     }
     return self;
 }
@@ -237,7 +232,8 @@
         
 //        [self login:@"i" password:@"1"];
         if (!isLoggedin)
-            [self login:@"b" password:@"1"];
+           // [self login:@"b" password:@"1"];
+            [self.alertView dismissAnimated:NO];
         else {
             [self loadMedicineData1];
             [self loadRailsPicklineData];
@@ -255,9 +251,6 @@
 }
 
 - (void)updateRailsDBWithPair:(MedDatePair*)pair {
-    
-    self.alertView.title = @"Updating...";
-    [self.alertView show];
     
     NSString* params = @"";
     if (pair.isDone) {
@@ -280,6 +273,7 @@
         params = [params addURLParameterForKey:kMedicineHistoryIsFirstHourColumn andObjectValue:[NSNumber numberWithBool:pair.isFirstHour]];
         
         [self sendRequest:kAPIMedicineHistoriesURL withParams:params method:kHTTPMethodPost];
+        self.delegate = pair;
     } else {
         
         // resume alert if needed
@@ -290,12 +284,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:kNextNotificationCanceledNotificationName object:nil userInfo:userInfo];
         }
         // remove from DB
-        PFQuery *query = [PFQuery queryWithClassName:self.medicineHistoryClassName];
-        //        PFObject *medicieObject = [query getObjectWithId:pair.pairID];
-        [query getObjectInBackgroundWithId:pair.pairID block:^(PFObject *medicieObject, NSError *error) {
-            [medicieObject delete];
-            [self performSelectorOnMainThread:@selector(dismissAlert) withObject:nil waitUntilDone:NO];
-        }];
+        [self deleteMedicieHistoryRecord: pair];
     }
 
 }
@@ -312,7 +301,7 @@
         //save pair to DB
         PFObject *medicieObject = [PFObject objectWithClassName:self.medicineHistoryClassName];
         if (pair.medicineID) {
-            [medicieObject setObject:pair.medicineID forKey:kMedicineHistoryMedicineIDColumn];
+            [medicieObject setObject:pair.medicineID forKey:kMedicineHistoryMedicineIDColumn1];
             
             // remove alarm if exists
             NSDate* now = [NSDate date];
@@ -324,7 +313,7 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNextNotificationCanceledNotificationName object:pair.date userInfo:userInfo];
             }
         }
-        [medicieObject setObject:[NSNumber numberWithInt:pair.type] forKey:kMedicineHistoryTypeColumn];
+        [medicieObject setObject:[NSNumber numberWithInt:pair.type] forKey:kMedicineHistoryTypeColumn1];
         [medicieObject setObject:[NSDate date] forKey:kMedicineHistoryActualHourColumn];
         [medicieObject setObject:[NSNumber numberWithBool:pair.isFirstHour] forKey:kMedicineHistoryIsFirstHourColumn];
 
@@ -369,18 +358,29 @@
 
 - (void)deleteMedicine:(MedicineEntity*)entity {
     
-    // remove from DB
-    self.alertView.title = @"Deleting...";
-    [self.alertView show];
-    
-    // delete alerts
-    [MainViewController cancelAllLocalNotificationsForID:kMedicineNotificationID andUniqueID:entity.medicineID];
-    // delete from DB
-    PFQuery *query = [PFQuery queryWithClassName:self.medicineClassName];
-    [query getObjectInBackgroundWithId:entity.medicineID block:^(PFObject *medicieObject, NSError *error) {
-        [medicieObject delete];
-        [self performSelectorOnMainThread:@selector(dismissAlert) withObject:nil waitUntilDone:NO];
-    }];
+    if (rails) {
+        
+//        SIAlertView* alertView = [[SIAlertView alloc] initWithTitle:@"Error" andMessage:@"not supported yet..."];
+//        [alertView addButtonWithTitle:@"OK"
+//                                 type:SIAlertViewButtonTypeDefault
+//                              handler:nil];
+//        [alertView show];
+        [self deleteMedicieRecord:entity];
+        
+    } else {
+        // remove from DB
+        self.alertView.title = @"Deleting...";
+        [self.alertView show];
+        
+        // delete alerts
+        [MainViewController cancelAllLocalNotificationsForID:kMedicineNotificationID andUniqueID:entity.medicineID];
+        // delete from DB
+        PFQuery *query = [PFQuery queryWithClassName:self.medicineClassName];
+        [query getObjectInBackgroundWithId:entity.medicineID block:^(PFObject *medicieObject, NSError *error) {
+            [medicieObject delete];
+            [self performSelectorOnMainThread:@selector(dismissAlert) withObject:nil waitUntilDone:NO];
+        }];
+    }
 }
 
 - (void)saveMedicineInDB:(MedicineEntity*)medicineEntity isNewRecord:(BOOL)isNewRecord {
@@ -435,7 +435,27 @@
 
 }
 
+#pragma mark- Private Calls
+
+- (User*)getLoggedinUser {
+    
+    User* user = [[User alloc] init];
+    user.password = [[NSUserDefaults standardUserDefaults] objectForKey:kProfilePswdID];
+    user.email = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileEmailID];
+    return user;
+}
+
 #pragma mark- APIs Calls
+
+- (void)signup:(User*)user delegate:(id<ModelManagerDelegate>) delegate {
+    
+    self.delegate = delegate;
+    UrlLoader* urlLoader = [[UrlLoader alloc] init];
+    urlLoader.delegate = self;
+    
+    NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@&password_confirmation=%@", user.email, user.password, user.password];
+    [urlLoader sendRequest:kAPISignupURL withParams:postData httpMethod:kHTTPMethodPost];
+}
 
 - (void)login:(NSString*)email password:(NSString*)password {
     
@@ -443,8 +463,22 @@
     urlLoader.delegate = self;
     
     NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@", email, password];
-//    [urlLoader startPost:kAPILoginURL withPostDataStr:postData];
     [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
+}
+
+- (void)login:(User*)user delegate:(id<ModelManagerDelegate>) delegate {
+    
+    self.delegate = delegate;
+    UrlLoader* urlLoader = [[UrlLoader alloc] init];
+    urlLoader.delegate = self;
+    
+    NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@", user.email, user.password];
+    [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
+}
+
+- (void)loginExistingUserWithDelegate:(id<ModelManagerDelegate>) delegate {
+    
+    [self login:[self getLoggedinUser] delegate:delegate];
 }
 
 - (void)loadRailsPicklineData {
@@ -526,8 +560,14 @@
         [alertView show];
         return;
     }
+    id obj = nil;
     int opCode = [[jsonResult objectForKey:@"opcode"] intValue];
     switch (opCode) {
+        case kOpCodeSignup:
+//            if (self.delegate)
+//                [self.delegate loadingDoneForOpcode:opCode response:response errMsg:[jsonResult objectForKey:@"error_msg"]];
+            break;
+            // login
         case kOpCodeLogin:
             isLoggedin = YES;
             [[NSUserDefaults standardUserDefaults] setObject:[jsonResult objectForKey:@"picklineId"] forKey:kProfilePicklineID];
@@ -545,9 +585,18 @@
         case kOpCodeMedicineHistories:
             [self extractMedicineHistoriesData:jsonResult];
             break;
+        case kOpCodeMedicineCreate:
+            obj = [[MedicineEntity alloc] initWithDictionary:[jsonResult objectForKey:@"medicine"]];
+            break;
+        case kOpCodeMedicineHistorieCreate:
+            obj = [[MedDatePair alloc] initWithDictionary:[jsonResult objectForKey:@"medicine_history"]];
+            break;
         default:
             break;
     }
+    if (self.delegate)
+        [self.delegate loadingDoneForOpcode:opCode response:response object:obj errMsg:[jsonResult objectForKey:@"error_msg"]];
+    self.delegate = nil;
 }
 
 - (void)urlLoadingError {
@@ -577,7 +626,19 @@
     
     NSString* params = [self getMedicineRequestParamsForEntity:entity];
     [self sendRequest:kAPIMedicineURL withParams:params method:kHTTPMethodPost];
+    self.delegate = entity;
 }
+
+- (void)deleteMedicieRecord:(MedicineEntity*)entity {
+    
+    [self sendRequest:[NSString stringWithFormat:kAPIMedicineDestroyURL, entity.medicineID]  withParams:nil method:kHTTPMethodDelete];
+}
+
+- (void)deleteMedicieHistoryRecord:(MedDatePair*)entity {
+    
+    [self sendRequest:[NSString stringWithFormat:kAPIMedicineHistoriesDestroyURL, entity.pairID]  withParams:nil method:kHTTPMethodDelete];
+}
+
 
 - (NSString*)getMedicineRequestParamsForEntity:(MedicineEntity*)entity {
     

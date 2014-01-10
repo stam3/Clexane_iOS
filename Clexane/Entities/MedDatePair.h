@@ -7,14 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <Parse/Parse.h>
 
+#import "ModelManagerDelegate.h"
 
 #define kMedicineHistoryMedicineIDColumn          @"medicine_id"
 #define kMedicineHistoryTypeColumn          @"c_type"
 #define kMedicineHistoryActualHourColumn    @"actualHour"
 #define kMedicineHistoryIsFirstHourColumn    @"isFirstHour"
+
+// pasrse.com
+#define kMedicineHistoryMedicineIDColumn1          @"medicineID"
+#define kMedicineHistoryTypeColumn1          @"type"
+
 
 typedef enum {
     kHistoryMedType = 100,
@@ -24,7 +29,7 @@ typedef enum {
     kHistoryParparType
 } HistoryType;
 
-@interface MedDatePair : NSObject
+@interface MedDatePair : NSObject <ModelManagerDelegate>
 
 @property (nonatomic, strong)       NSString*   name;
 @property (nonatomic, strong)       NSString*   pairID;

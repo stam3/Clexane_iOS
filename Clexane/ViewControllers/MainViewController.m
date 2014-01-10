@@ -14,6 +14,7 @@
 #define kClexaneRow     0
 #define kPicklineRow    2
 #define kMedicineRow    1
+#define kSignoutRow     3
 
 #define kDateFormat                 @"EEE, MMM d, yy - kk:mm"
 #define kDateFormatHour             @"kk:mm"
@@ -49,7 +50,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.data = [[NSArray alloc] initWithObjects:@"Clexane", @"תרופות",@"פיקליין", nil];
+    if (rails)
+        self.data = [[NSArray alloc] initWithObjects:@"Clexane", @"תרופות",@"פיקליין", @"יציאה", nil];
+    else
+        self.data = [[NSArray alloc] initWithObjects:@"Clexane", @"תרופות", @"פיקליין", nil];
 	// Do any additional setup after loading the view.
     
    // [[UIApplication sharedApplication] cancelAllLocalNotifications];
@@ -110,11 +114,17 @@
         case kPicklineRow:
             [self performSegueWithIdentifier:@"pickTable" sender:self];
             break;
-//        case kPicklineRow:
-//            [self performSegueWithIdentifier:@"pickline" sender:self];
-//            break;
         case kMedicineRow:
             [self performSegueWithIdentifier:@"medicine" sender:self];
+            break;
+        case kSignoutRow: {
+            UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Logout?"
+                                                                     delegate:self
+                                                                    cancelButtonTitle:@"Cancel"
+                                                                    destructiveButtonTitle:nil
+                                                            otherButtonTitles:@"Yes", nil];
+            [actionSheet showInView:self.view];
+        }
             break;
         default:
             break;
@@ -394,6 +404,17 @@
     [nowComponents setSecond:59];
     
     return [[NSCalendar currentCalendar] dateFromComponents:nowComponents];
+}
+
+#pragma merk- UIActionSheetDelegate Methods
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex != [actionSheet cancelButtonIndex]) {
+        
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [delegate logout];
+    }
 }
 
 @end
