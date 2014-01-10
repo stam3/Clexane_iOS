@@ -564,12 +564,14 @@
     int opCode = [[jsonResult objectForKey:@"opcode"] intValue];
     switch (opCode) {
         case kOpCodeSignup:
-//            if (self.delegate)
-//                [self.delegate loadingDoneForOpcode:opCode response:response errMsg:[jsonResult objectForKey:@"error_msg"]];
+            if (self.delegate)
+                [self.delegate loadingDoneForOpcode:opCode response:response object:obj errMsg:[jsonResult objectForKey:@"error_msg"]];
             break;
             // login
         case kOpCodeLogin:
             isLoggedin = YES;
+            if (self.delegate)
+                [self.delegate loadingDoneForOpcode:opCode response:response object:obj errMsg:[jsonResult objectForKey:@"error_msg"]];
             [[NSUserDefaults standardUserDefaults] setObject:[jsonResult objectForKey:@"picklineId"] forKey:kProfilePicklineID];
             //user auth_token
             [self loadMedicineData1];
@@ -594,9 +596,6 @@
         default:
             break;
     }
-    if (self.delegate)
-        [self.delegate loadingDoneForOpcode:opCode response:response object:obj errMsg:[jsonResult objectForKey:@"error_msg"]];
-    self.delegate = nil;
 }
 
 - (void)urlLoadingError {
