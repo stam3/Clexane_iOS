@@ -98,6 +98,8 @@
 		47DA5449187D3A3C00CF318A /* notificationSound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 47BD494F18166099008CCCFE /* notificationSound.caf */; };
 		47DA544A187D3A3C00CF318A /* bell_chimes.caf in Resources */ = {isa = PBXBuildFile; fileRef = 47AE1DD7181CEC0000826D39 /* bell_chimes.caf */; };
 		47DA544B187D3A3C00CF318A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0FB17D1E4FA00783ACF /* MainStoryboard.storyboard */; };
+		47F590661884814300B186B5 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F590651884814300B186B5 /* AccountViewController.m */; };
+		47F590671884814300B186B5 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F590651884814300B186B5 /* AccountViewController.m */; };
 		47F5DE901809A292003D7FD3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F5DE8F1809A292003D7FD3 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +177,8 @@
 		47DA544F187D3A3C00CF318A /* Clexane Rails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clexane Rails.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47DA5450187D3A3C00CF318A /* Clexane Rails-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Clexane Rails-Info.plist"; path = "/Users/davidsayag/Documents/Devel/XcodeProjects/Per/Clexane/Clexane Rails-Info.plist"; sourceTree = "<absolute>"; };
 		47DA5453187ECF8B00CF318A /* ModelManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelManagerDelegate.h; path = Protocols/ModelManagerDelegate.h; sourceTree = "<group>"; };
+		47F590641884814300B186B5 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountViewController.h; path = ViewControllers/AccountViewController.h; sourceTree = "<group>"; };
+		47F590651884814300B186B5 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountViewController.m; path = ViewControllers/AccountViewController.m; sourceTree = "<group>"; };
 		47F5DE8E1809A292003D7FD3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ViewControllers/MainViewController.h; sourceTree = "<group>"; };
 		47F5DE8F1809A292003D7FD3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ViewControllers/MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -396,6 +400,8 @@
 				47BD49591819B6DB008CCCFE /* TodayViewController.m */,
 				47AE1DDA181D895A00826D39 /* PicklineTableViewController.h */,
 				47AE1DDB181D895A00826D39 /* PicklineTableViewController.m */,
+				47F590641884814300B186B5 /* AccountViewController.h */,
+				47F590651884814300B186B5 /* AccountViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -523,6 +529,7 @@
 				478E612A181124DA00599906 /* MedicineEntity.m in Sources */,
 				47BD49571819AA1F008CCCFE /* ModelManager.m in Sources */,
 				47AE1DDC181D895A00826D39 /* PicklineTableViewController.m in Sources */,
+				47F590661884814300B186B5 /* AccountViewController.m in Sources */,
 				4713FCFA18116C9F00DA561B /* DatePickerViewController.m in Sources */,
 				47BD495318179856008CCCFE /* NudnikViewController.m in Sources */,
 				4713FCFD1812D01200DA561B /* MedicineDetailsViewController.m in Sources */,
@@ -554,6 +561,7 @@
 				47DA542C187D3A3C00CF318A /* MedicineEntity.m in Sources */,
 				47DA542D187D3A3C00CF318A /* ModelManager.m in Sources */,
 				47DA542E187D3A3C00CF318A /* PicklineTableViewController.m in Sources */,
+				47F590671884814300B186B5 /* AccountViewController.m in Sources */,
 				47DA542F187D3A3C00CF318A /* DatePickerViewController.m in Sources */,
 				47DA5430187D3A3C00CF318A /* NudnikViewController.m in Sources */,
 				47DA5431187D3A3C00CF318A /* MedicineDetailsViewController.m in Sources */,

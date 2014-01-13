@@ -165,4 +165,9 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (NSString*)getUserEmail {
+    
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsProfileEmailID];
+}
+
 @end

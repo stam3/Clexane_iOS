@@ -68,11 +68,12 @@
                         <segue destination="2" kind="push" identifier="clexane" id="1CB-6r-aV8"/>
                         <segue destination="gDT-rg-hW7" kind="push" identifier="nudnik" id="FYA-4B-Uip"/>
                         <segue destination="9LA-sB-abk" kind="push" identifier="pickTable" id="YbN-Lg-kDf"/>
+                        <segue destination="ZlX-pj-ajw" kind="push" identifier="profile" id="Zjg-HM-Zab"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tDN-6T-hSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="-97"/>
+            <point key="canvasLocation" x="-374" y="-104"/>
         </scene>
         <!--Today View Controller-->
         <scene sceneID="SDX-WN-kfb">
@@ -1075,6 +1076,76 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="131" y="578"/>
         </scene>
+        <!--Account View Controller -  חשבון-->
+        <scene sceneID="h24-w3-gbZ">
+            <objects>
+                <tableViewController id="ZlX-pj-ajw" customClass="AccountViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="22" sectionFooterHeight="22" id="o77-oC-qd9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="0wK-O0-lhg">
+                            <rect key="frame" x="0.0" y="64" width="320" height="121"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="QRG-Q3-Whd">
+                            <rect key="frame" x="0.0" y="303" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4hJ-J5-YRR">
+                                    <rect key="frame" x="46" y="7" width="229" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <state key="normal" title="Logout">
+                                        <color key="titleColor" red="0.95242442255434778" green="0.29562530176330787" blue="0.074015275011354284" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="logoutClicked:" destination="ZlX-pj-ajw" eventType="touchUpInside" id="qpF-PB-V8q"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="accountCell" textLabel="dLz-9w-oRe" detailTextLabel="IDP-jK-wWn" rowHeight="96" style="IBUITableViewCellStyleValue1" id="qjN-d6-ldS">
+                                <rect key="frame" x="0.0" y="207" width="320" height="96"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qjN-d6-ldS" id="GB5-c7-3ns">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="sdsdדגשגשגשדגש" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dLz-9w-oRe">
+                                            <rect key="frame" x="15" y="36" width="151" height="24"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="אימייל:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IDP-jK-wWn">
+                                            <rect key="frame" x="252" y="36" width="53" height="24"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="ZlX-pj-ajw" id="lZ9-c0-Ylu"/>
+                            <outlet property="delegate" destination="ZlX-pj-ajw" id="rnc-OM-TJl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title=" חשבון" id="k9I-KZ-tL7"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxx-oT-wb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131" y="1327"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1UT-yW-xMx">
             <objects>
@@ -1100,7 +1171,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="XKA-kh-ecm"/>
+        <segue reference="tam-eX-6BT"/>
         <segue reference="ulf-Jx-9lD"/>
     </inferredMetricsTieBreakers>
 </document>

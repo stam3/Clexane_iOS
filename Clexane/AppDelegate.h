@@ -22,6 +22,6 @@
 - (void)logout;
 - (BOOL)isPicklineOn;
 - (void)setPicklineOn:(BOOL)status;
-
+- (NSString*)getUserEmail;
 
 @end
