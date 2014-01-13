@@ -71,17 +71,21 @@
     
     [MainViewController cancelAllLocalNotificationsForID:kPicklineNotificationID];
     
-    NSDate* nextDate = [self getComponentNextDate:kPicklineComponentBandage];
-    [self setLocalNotificationForPicklineComponent:kPicklineComponentBandage forDate:nextDate];
-    
-    nextDate = [self getComponentNextDate:kPicklineComponentBlueVentile];
-    [self setLocalNotificationForPicklineComponent:kPicklineComponentBlueVentile forDate:nextDate];
-    
-    nextDate = [self getComponentNextDate:kPicklineComponentRedVentile];
-    [self setLocalNotificationForPicklineComponent:kPicklineComponentRedVentile forDate:nextDate];
-    
-    nextDate = [self getComponentNextDate:kPicklineComponentParpar];
-    [self setLocalNotificationForPicklineComponent:kPicklineComponentParpar forDate:nextDate];
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if ([delegate isPicklineOn]) {
+        
+        NSDate* nextDate = [self getComponentNextDate:kPicklineComponentBandage];
+        [self setLocalNotificationForPicklineComponent:kPicklineComponentBandage forDate:nextDate];
+        
+        nextDate = [self getComponentNextDate:kPicklineComponentBlueVentile];
+        [self setLocalNotificationForPicklineComponent:kPicklineComponentBlueVentile forDate:nextDate];
+        
+        nextDate = [self getComponentNextDate:kPicklineComponentRedVentile];
+        [self setLocalNotificationForPicklineComponent:kPicklineComponentRedVentile forDate:nextDate];
+        
+        nextDate = [self getComponentNextDate:kPicklineComponentParpar];
+        [self setLocalNotificationForPicklineComponent:kPicklineComponentParpar forDate:nextDate];
+    }
 }
 
 #pragma mark- Custom Methods

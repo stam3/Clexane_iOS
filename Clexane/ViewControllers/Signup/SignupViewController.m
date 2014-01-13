@@ -107,8 +107,8 @@
         [delegate.modelManager login:self.user delegate:self];
     else if (opCode == kOpCodeLogin) {
     
-        [[NSUserDefaults standardUserDefaults] setObject:self.user.email forKey:kProfileEmailID];
-        [[NSUserDefaults standardUserDefaults] setObject:self.user.password forKey:kProfilePswdID];
+        [[NSUserDefaults standardUserDefaults] setObject:self.user.email forKey:kUserDefaultsProfileEmailID];
+        [[NSUserDefaults standardUserDefaults] setObject:self.user.password forKey:kUserDefaultsProfilePswdID];
         [delegate closeSignupController];
     }
 }

@@ -27,9 +27,10 @@
 #define kOpCodeMedicineHistorieCreate               301
 
 
-#define kProfilePicklineID          @"pickID"
-#define kProfileEmailID             @"emailID"
-#define kProfilePswdID              @"pswdID"
+#define kUserDefaultsProfilePicklineID          @"pickID"
+#define kUserDefaultsProfileEmailID             @"emailID"
+#define kUserDefaultsProfilePswdID              @"pswdID"
+#define kUserDefaultsPicklineOn              @"picklineOn"
 
 @interface ModelManager : NSObject <UrlLoaderDelegate>
 

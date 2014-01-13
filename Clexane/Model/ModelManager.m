@@ -454,8 +454,8 @@ typedef enum {
 - (User*)getLoggedinUser {
     
     User* user = [[User alloc] init];
-    user.password = [[NSUserDefaults standardUserDefaults] objectForKey:kProfilePswdID];
-    user.email = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileEmailID];
+    user.password = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsProfilePswdID];
+    user.email = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsProfileEmailID];
     return user;
 }
 
@@ -500,7 +500,7 @@ typedef enum {
     UrlLoader* urlLoader = [[UrlLoader alloc] init];
     urlLoader.delegate = self;
     
-    [self sendRequest:[NSString stringWithFormat:kAPIPicklineURL, [[NSUserDefaults standardUserDefaults] objectForKey:kProfilePicklineID]] withParams:nil method:kHTTPMethodGet];
+    [self sendRequest:[NSString stringWithFormat:kAPIPicklineURL, [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsProfilePicklineID]] withParams:nil method:kHTTPMethodGet];
 //    [self sendRequest:[NSString stringWithFormat:kAPIPicklineURL, @"12"] withParams:nil method:kHTTPMethodGet];
 }
 
@@ -603,7 +603,7 @@ typedef enum {
             isLoggedin = YES;
             if (self.delegate)
                 [self.delegate loadingDoneForOpcode:opCode response:response object:obj errMsg:[jsonResult objectForKey:@"error_msg"]];
-            [[NSUserDefaults standardUserDefaults] setObject:[jsonResult objectForKey:@"picklineId"] forKey:kProfilePicklineID];
+            [[NSUserDefaults standardUserDefaults] setObject:[jsonResult objectForKey:@"picklineId"] forKey:kUserDefaultsProfilePicklineID];
             //user auth_token
             [self loadMedicineData1];
             [self loadRailsPicklineData];

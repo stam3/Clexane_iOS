@@ -22,6 +22,9 @@
 
 @interface PicklineTableViewController ()
 
+@property (weak, nonatomic) IBOutlet UISwitch *onoffSwitch;
+
+- (IBAction)onOffSwitchValueChanged:(id)sender;
 - (IBAction)refreshClicked:(id)sender;
 - (IBAction)bandageSegementedControlValueChanged:(id)sender;
 
@@ -53,6 +56,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDataReady:) name:kPicklineNotificationName object:nil];
     //
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.onoffSwitch.on = [delegate isPicklineOn];
     if (delegate.modelManager.medicineData) {
         self.picklineEntity = delegate.modelManager.picklineEntity;
         [self updateUI];
@@ -268,6 +272,13 @@
     [self.picklineEntity saveInBackground];
 }
 
+- (IBAction)onOffSwitchValueChanged:(id)sender {
+    
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [delegate setPicklineOn:self.onoffSwitch.on];
+    [self.tableView reloadData];
+}
+
 - (IBAction)refreshClicked:(id)sender {
     
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -381,6 +392,16 @@
             break;
     }
     
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    float alpha = ([delegate isPicklineOn]) ? 1.0 : 0.3;
+    titleLabel.alpha = alpha;
+    lastHandledTitleLabel.alpha = alpha;
+    lastHandledDateLabel.alpha = alpha;
+    nextHandledTitleLabel.alpha = alpha;
+    nextHandledDateLabel.alpha = alpha;
+    button.enabled = [delegate isPicklineOn];
+    segmentedControl.enabled = [delegate isPicklineOn];
+
     return cell;
 }
 
