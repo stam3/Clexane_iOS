@@ -22,9 +22,16 @@
 #define kAPIMedicineURL                     @"/medicines.json"
 #define kAPIMedicineUpdateURL               @"/medicines/%@.json"
 #define kAPIPicklineURL                     @"/picklines/%@.json"
-#define kAPIMedicineHistoriesURL            @"/medicine_histories.json"
+#define kAPIMedicineHistoriesCreateURL       @"/medicine_histories.json"
+#define kAPIMedicineHistoriesURL            @"/medicine_histories.json?history_type=%d"
+#define kAPIMedicineHistoriesPerMedicineURL @"/medicine_histories.json?history_type=2&medicine_id=%@"
 #define kAPIMedicineDestroyURL              @"/medicines/%@.json"
 #define kAPIMedicineHistoriesDestroyURL      @"/medicine_histories/%@.json"
+
+typedef enum {
+    kHistoryDataTodayType = 300,
+    kHistoryDataPerMedicineType
+} HistoryDataType;
 
 
 @interface ModelManager ()
@@ -179,10 +186,17 @@
 
 }
 
+- (void)loadRailsMedicineHistoryDataForMedicineID:(NSString*)medicineID {
+ 
+    [self sendRequest:[NSString stringWithFormat:kAPIMedicineHistoriesPerMedicineURL, medicineID] withParams:nil method:kHTTPMethodGet];
+}
+
 - (void)loadMedicineHistoryDataForMedicineID:(NSString*)medicineID {
     
-    if (rails)
+    if (rails) {
+        [self loadRailsMedicineHistoryDataForMedicineID:medicineID];
         return;
+    }
 //    if (isLoadingHistoryNow)
 //        return;
 //    isLoadingHistoryNow = YES;
@@ -205,7 +219,7 @@
                     MedDatePair *pair = [[MedDatePair alloc] initWithPFObject:obj];
                     [medicineHistoryData addObject:pair];
                 }
-                NSDictionary* info = @{@"name":kMedicineHistoryNotificationName, @"object":medicineHistoryData};
+                NSDictionary* info = @{@"name":kMedicineHistoryPerMedicineIDNotificationName, @"object":medicineHistoryData};
                 [self performSelectorOnMainThread:@selector(postNotificationNamed:) withObject:info waitUntilDone:NO];
             }
         }
@@ -272,7 +286,7 @@
         params = [params addURLParameterForKey:kMedicineHistoryActualHourColumn andDateValue:[NSDate date]];
         params = [params addURLParameterForKey:kMedicineHistoryIsFirstHourColumn andObjectValue:[NSNumber numberWithBool:pair.isFirstHour]];
         
-        [self sendRequest:kAPIMedicineHistoriesURL withParams:params method:kHTTPMethodPost];
+        [self sendRequest:kAPIMedicineHistoriesCreateURL withParams:params method:kHTTPMethodPost];
         self.delegate = pair;
     } else {
         
@@ -520,16 +534,33 @@
 //    }
 }
 
+- (void)extractMedicineHistoriesDataForMedicineID:(NSDictionary*)jsonResult {
+    
+    NSMutableArray* medicineHistories = [[NSMutableArray alloc] init];
+    NSArray* array = [jsonResult objectForKey:@"medicine_histories"];
+    if (![array isKindOfClass:[NSNull class]] && [array count] > 0) {
+        for (NSDictionary* pairDictionary in array) {
+            MedDatePair *pair = [[MedDatePair alloc] initWithDictionary:pairDictionary];
+            [medicineHistories addObject:pair];
+        }
+        
+        NSDictionary* info = @{@"name": kMedicineHistoryPerMedicineIDNotificationName, @"object" : self.historyMedIDsArray};
+        [self performSelectorOnMainThread:@selector(postNotificationNamed:) withObject:info waitUntilDone:NO];
+    }
+}
+
 - (void)extractMedicineHistoriesData:(NSDictionary*)jsonResult {
     
     NSArray* array = [jsonResult objectForKey:@"medicine_histories"];
-    for (NSDictionary* pairDictionary in array) {
-        MedDatePair *pair = [[MedDatePair alloc] initWithDictionary:pairDictionary];
-        [self.historyMedIDsArray addObject:pair];
-    }
+    if (![array isKindOfClass:[NSNull class]]) {
+        for (NSDictionary* pairDictionary in array) {
+            MedDatePair *pair = [[MedDatePair alloc] initWithDictionary:pairDictionary];
+            [self.historyMedIDsArray addObject:pair];
+        }
 
-    NSDictionary* info = @{@"name": kCheckedItemsNotificationName, @"object" : self.historyMedIDsArray};
-    [self performSelectorOnMainThread:@selector(postNotificationNamed:) withObject:info waitUntilDone:NO];
+        NSDictionary* info = @{@"name": kCheckedItemsNotificationName, @"object" : self.historyMedIDsArray};
+        [self performSelectorOnMainThread:@selector(postNotificationNamed:) withObject:info waitUntilDone:NO];
+    }
 }
 
 #pragma mark- UrlLoaderDelegate
@@ -584,8 +615,11 @@
         case kOpCodePicklineShow:
             self.picklineEntity = [[PicklineEntity alloc] initWithDictionary:[jsonResult objectForKey:@"pickline"]];
             break;
-        case kOpCodeMedicineHistories:
+        case kOpCodeMedicineHistoriesToday:
             [self extractMedicineHistoriesData:jsonResult];
+            break;
+        case kOpCodeMedicineHistoriesTodayPerMedicine:
+            [self extractMedicineHistoriesDataForMedicineID:jsonResult];
             break;
         case kOpCodeMedicineCreate:
             obj = [[MedicineEntity alloc] initWithDictionary:[jsonResult objectForKey:@"medicine"]];
@@ -611,7 +645,7 @@
     if (isLoadingHistoryNow)
         return;
     isLoadingHistoryNow = YES;
-    [self sendRequest:kAPIMedicineHistoriesURL withParams:nil method:kHTTPMethodGet];
+    [self sendRequest:[NSString stringWithFormat:kAPIMedicineHistoriesURL, 1] withParams:nil method:kHTTPMethodGet];
 }
 
 

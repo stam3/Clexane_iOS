@@ -16,13 +16,15 @@
 
 //#import "AppDelegate.h"
 
-#define kOpCodeLogin                1
-#define kOpCodeSignup               2
-#define kOpCodeMedicines            100
-#define kOpCodeMedicineCreate       101
-#define kOpCodePicklineShow         200
-#define kOpCodeMedicineHistories    300
-#define kOpCodeMedicineHistorieCreate    301
+#define kOpCodeLogin                                1
+#define kOpCodeSignup                               2
+#define kOpCodeMedicines                            100
+#define kOpCodeMedicineCreate                       101
+#define kOpCodePicklineShow                         200
+#define kOpCodeMedicineHistoriesAll                 300
+#define kOpCodeMedicineHistoriesToday               310
+#define kOpCodeMedicineHistoriesTodayPerMedicine    320
+#define kOpCodeMedicineHistorieCreate               301
 
 
 #define kProfilePicklineID          @"pickID"

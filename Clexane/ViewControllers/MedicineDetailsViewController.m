@@ -126,6 +126,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 //- (void)setMedicineEntity:(MedicineEntity*)entity {
 //    
 //    self.medicineEntity = entity;
@@ -156,7 +162,7 @@
 
 - (IBAction)historyButtonClicked:(id)sender {
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onHistoryDataReady:) name:kMedicineHistoryNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onHistoryDataReady:) name:kMedicineHistoryPerMedicineIDNotificationName object:nil];
     
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     [delegate.modelManager loadMedicineHistoryDataForMedicineID:self.medicineEntity.medicineID];
@@ -165,10 +171,17 @@
 - (void)onHistoryDataReady:(NSNotification*)notification {
     
     self.historyData = [notification object];
-//    [self updateUI];
     NSLog(@"historyData: %@", self.historyData);
+    if (self.historyData && [self.historyData count] > 0) {
+        
+        NSString* medID = ((MedDatePair*)[self.historyData objectAtIndex:0]).medicineID;
+        if (![self.medicineEntity.medicineID isEqualToString:medID]) {
+            self.historyData = nil;
+            return;
+        }
+    }
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMedicineHistoryNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMedicineHistoryPerMedicineIDNotificationName object:nil];
     [self.table reloadData];
 }
 

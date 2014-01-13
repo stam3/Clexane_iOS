@@ -51,6 +51,11 @@
     return self;
 }
 
+-(void) dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (id)initWithDictionary:(NSDictionary*)record {
 
     self = [self init];

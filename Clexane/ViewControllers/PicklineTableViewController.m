@@ -66,6 +66,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Private Methods
 
 - (void)setNextWashDate:(NSDate*)lastDate forTitleLabel:(UILabel*)titleLabel andDateLabel:(UILabel*)dateLabel withButton:(UIButton*)button {
