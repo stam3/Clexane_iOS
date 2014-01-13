@@ -117,14 +117,8 @@
         case kMedicineRow:
             [self performSegueWithIdentifier:@"medicine" sender:self];
             break;
-        case kSignoutRow: {
-            UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Logout?"
-                                                                     delegate:self
-                                                                    cancelButtonTitle:@"Cancel"
-                                                                    destructiveButtonTitle:nil
-                                                            otherButtonTitles:@"Yes", nil];
-            [actionSheet showInView:self.view];
-        }
+        case kSignoutRow:
+            [self performSegueWithIdentifier:@"profile" sender:self];
             break;
         default:
             break;
@@ -404,17 +398,6 @@
     [nowComponents setSecond:59];
     
     return [[NSCalendar currentCalendar] dateFromComponents:nowComponents];
-}
-
-#pragma merk- UIActionSheetDelegate Methods
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    if (buttonIndex != [actionSheet cancelButtonIndex]) {
-        
-        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        [delegate logout];
-    }
 }
 
 @end

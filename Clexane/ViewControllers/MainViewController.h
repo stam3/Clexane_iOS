@@ -29,7 +29,7 @@
 #define kMedicineNotificationName   @"MedicineNotification"
 #define kPicklineNotificationName   @"PicklineNotification"
 #define kCheckedItemsNotificationName   @"CheckedItemsNotification"
-#define kMedicineHistoryNotificationName   @"MedicineHistoryNotification"
+#define kMedicineHistoryPerMedicineIDNotificationName   @"MedicineHistoryNotification"
 #define kNextNotificationCanceledNotificationName   @"NextAlertCanceledNotification"
 
 #define kBandageAlertBody                       @"להחליף תחבושת היום"
@@ -38,7 +38,7 @@
 #define kParparAlertBody                      @"להחליף פרפר היום"
 
 static const BOOL rails = 1;
-static const BOOL debug = 1;
+static const BOOL debug = 0;
 
 typedef enum {
     kDateFormatterFullType,
@@ -48,7 +48,7 @@ typedef enum {
     kDateFormatterNoTimeNoYearType
 } DateFormatterType;
 
-@interface MainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface MainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 + (NSString*)stringFromDate:(NSDate*)date withFormat:(int)formatType;
 + (NSString*)stringFromDate:(NSDate*)date withFormat:(int)formatType formatted:(BOOL)useTexts;

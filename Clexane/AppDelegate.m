@@ -30,7 +30,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"bgEnterDate"];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-    BOOL signedup = ([[NSUserDefaults standardUserDefaults] objectForKey:kProfileEmailID] != nil);
+    BOOL signedup = ([[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsProfileEmailID] != nil);
     if (!rails)
         signedup = YES;
     NSString* storyboardName = @"MainStoryboard";
@@ -135,14 +135,39 @@
 
 - (void)logout {
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kProfileEmailID];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kProfilePswdID];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefaultsProfileEmailID];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefaultsProfilePswdID];
     [[NSUserDefaults standardUserDefaults]  synchronize];
     
     UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"SignupStoryboard" bundle:nil];
     UIViewController *rootController = [settingsStoryboard instantiateInitialViewController];
     rootController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.window.rootViewController = rootController;
+}
+
+- (BOOL)isPicklineOn {
+    
+    int state = [[NSUserDefaults standardUserDefaults] integerForKey:kUserDefaultsPicklineOn];
+    if (state == 2)
+        return YES;
+    else if (state == 1)
+        return NO;
+    else {
+        [self setPicklineOn:YES];
+        return YES;
+    }
+}
+
+- (void)setPicklineOn:(BOOL)status {
+    
+    int state = (status) ? 2 : 1;
+    [[NSUserDefaults standardUserDefaults] setInteger:state forKey:kUserDefaultsPicklineOn];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString*)getUserEmail {
+    
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsProfileEmailID];
 }
 
 @end

@@ -22,6 +22,9 @@
 
 @interface PicklineTableViewController ()
 
+@property (weak, nonatomic) IBOutlet UISwitch *onoffSwitch;
+
+- (IBAction)onOffSwitchValueChanged:(id)sender;
 - (IBAction)refreshClicked:(id)sender;
 - (IBAction)bandageSegementedControlValueChanged:(id)sender;
 
@@ -53,6 +56,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDataReady:) name:kPicklineNotificationName object:nil];
     //
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.onoffSwitch.on = [delegate isPicklineOn];
     if (delegate.modelManager.medicineData) {
         self.picklineEntity = delegate.modelManager.picklineEntity;
         [self updateUI];
@@ -66,6 +70,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Private Methods
 
 - (void)setNextWashDate:(NSDate*)lastDate forTitleLabel:(UILabel*)titleLabel andDateLabel:(UILabel*)dateLabel withButton:(UIButton*)button {
@@ -76,14 +85,14 @@
         titleLabel.text = @"ניתן לשימוש";
         dateLabel.text = @"";
         titleLabel.textColor = [UIColor colorWithRed:24/255.0 green:153/255.0 blue:14/255.0 alpha:1.0];
-        button.enabled = YES;
+        //button.enabled = YES;
     }
     else {
         NSDate* nextDate = [lastDate dateByAddingTimeInterval:interval];
         dateLabel.text = [MainViewController stringFromDate:nextDate withFormat:kDateFormatterNoYearType];
         titleLabel.text = @"לא להשתמש עד:";
         titleLabel.textColor = [UIColor redColor];
-        button.enabled = NO;
+        //button.enabled = NO;
     }
 }
 
@@ -263,6 +272,13 @@
     [self.picklineEntity saveInBackground];
 }
 
+- (IBAction)onOffSwitchValueChanged:(id)sender {
+    
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [delegate setPicklineOn:self.onoffSwitch.on];
+    [self.tableView reloadData];
+}
+
 - (IBAction)refreshClicked:(id)sender {
     
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -308,6 +324,7 @@
             lastHandledDateLabel.text = [MainViewController stringFromDate:self.picklineEntity.redLastWashDate withFormat:kDateFormatterNoYearType];
             [self setNextWashDate:self.picklineEntity.redLastWashDate forTitleLabel:nextHandledTitleLabel andDateLabel:nextHandledDateLabel withButton:button];
             segmentedControl.hidden = YES;
+            [button setTitle:@"נשטף עכשיו" forState:UIControlStateNormal];
             break;
         case kBlueRow:
             titleLabel.text = @"כחול";
@@ -315,6 +332,7 @@
             lastHandledDateLabel.text = [MainViewController stringFromDate:self.picklineEntity.blueLastWashDate withFormat:kDateFormatterNoYearType];
             [self setNextWashDate:self.picklineEntity.blueLastWashDate forTitleLabel:nextHandledTitleLabel andDateLabel:nextHandledDateLabel withButton:button];
             segmentedControl.hidden = YES;
+            [button setTitle:@"נשטף עכשיו" forState:UIControlStateNormal];
             break;
         case kBandageRow:
             titleLabel.text = @"חבישה";
@@ -374,6 +392,16 @@
             break;
     }
     
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    float alpha = ([delegate isPicklineOn]) ? 1.0 : 0.3;
+    titleLabel.alpha = alpha;
+    lastHandledTitleLabel.alpha = alpha;
+    lastHandledDateLabel.alpha = alpha;
+    nextHandledTitleLabel.alpha = alpha;
+    nextHandledDateLabel.alpha = alpha;
+    button.enabled = [delegate isPicklineOn];
+    segmentedControl.enabled = [delegate isPicklineOn];
+
     return cell;
 }
 

@@ -20,5 +20,8 @@
 - (void)refreshData;
 - (void)closeSignupController;
 - (void)logout;
+- (BOOL)isPicklineOn;
+- (void)setPicklineOn:(BOOL)status;
+- (NSString*)getUserEmail;
 
 @end

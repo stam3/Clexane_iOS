@@ -118,6 +118,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)onDataReady:(NSNotification*)notification {
     
     self.data = [notification object];
@@ -212,50 +217,52 @@
     self.todaysPicklinePairs = [[NSMutableArray alloc] init];
     self.tomorrowPicklinePairs = [[NSMutableArray alloc] init];
     
-    // bandage
-    NSDate* date = [self.picklineEntity getBandageNextDate];
-    MedDatePair* pair = [[MedDatePair alloc] init];
-    pair.type = kHistoryBandageType;
-    pair.name = @"החלפת תחבושת";
-    pair.date = date;
-    if ([date isToday])
-        [self.todaysPicklinePairs addObject:pair];
-    else if([date isTomorrow])
-        [self.tomorrowPicklinePairs addObject:pair];
-    
-    // Blue Ventile
-    date = [self.picklineEntity getVentileNextDate:kPicklineComponentBlueVentile];
-    pair = [[MedDatePair alloc] init];
-    pair.type = kHistoryBlueVentileType;
-    pair.name = @"החלפת ונטיל כחול";
-    pair.date = date;
-    if ([date isToday])
-        [self.todaysPicklinePairs addObject:pair];
-    else if([date isTomorrow])
-        [self.tomorrowPicklinePairs addObject:pair];
-    
-    // Red Ventile
-    date = [self.picklineEntity getVentileNextDate:kPicklineComponentRedVentile];
-    pair = [[MedDatePair alloc] init];
-    pair.type = kHistoryRedVentileType;
-    pair.name = @"החלפת ונטיל אדום";
-    pair.date = date;
-    if ([date isToday])
-        [self.todaysPicklinePairs addObject:pair];
-    else if([date isTomorrow])
-        [self.tomorrowPicklinePairs addObject:pair];
-    
-    // Parpar
-    date = [self.picklineEntity getParparNextDate];
-    pair = [[MedDatePair alloc] init];
-    pair.type = kHistoryParparType;
-    pair.name = @"החלפת פרפר";
-    pair.date = date;
-    if ([date isToday])
-        [self.todaysPicklinePairs addObject:pair];
-    else if([date isTomorrow])
-        [self.tomorrowPicklinePairs addObject:pair];
-
+    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if ([delegate isPicklineOn]) {
+        // bandage
+        NSDate* date = [self.picklineEntity getBandageNextDate];
+        MedDatePair* pair = [[MedDatePair alloc] init];
+        pair.type = kHistoryBandageType;
+        pair.name = @"החלפת תחבושת";
+        pair.date = date;
+        if ([date isToday])
+            [self.todaysPicklinePairs addObject:pair];
+        else if([date isTomorrow])
+            [self.tomorrowPicklinePairs addObject:pair];
+        
+        // Blue Ventile
+        date = [self.picklineEntity getVentileNextDate:kPicklineComponentBlueVentile];
+        pair = [[MedDatePair alloc] init];
+        pair.type = kHistoryBlueVentileType;
+        pair.name = @"החלפת ונטיל כחול";
+        pair.date = date;
+        if ([date isToday])
+            [self.todaysPicklinePairs addObject:pair];
+        else if([date isTomorrow])
+            [self.tomorrowPicklinePairs addObject:pair];
+        
+        // Red Ventile
+        date = [self.picklineEntity getVentileNextDate:kPicklineComponentRedVentile];
+        pair = [[MedDatePair alloc] init];
+        pair.type = kHistoryRedVentileType;
+        pair.name = @"החלפת ונטיל אדום";
+        pair.date = date;
+        if ([date isToday])
+            [self.todaysPicklinePairs addObject:pair];
+        else if([date isTomorrow])
+            [self.tomorrowPicklinePairs addObject:pair];
+        
+        // Parpar
+        date = [self.picklineEntity getParparNextDate];
+        pair = [[MedDatePair alloc] init];
+        pair.type = kHistoryParparType;
+        pair.name = @"החלפת פרפר";
+        pair.date = date;
+        if ([date isToday])
+            [self.todaysPicklinePairs addObject:pair];
+        else if([date isTomorrow])
+            [self.tomorrowPicklinePairs addObject:pair];
+    }
     [self updateView];
 }
 

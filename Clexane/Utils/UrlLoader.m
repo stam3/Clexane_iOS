@@ -97,7 +97,7 @@
     
 	//NSString *post = @"login_email=gilddd@2.com&password=&login_b=login";
     if (params) {
-        NSData *encodedPostData = [params dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSData *encodedPostData = [params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%d", [encodedPostData length]];
         [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
         [request setHTTPBody:encodedPostData];

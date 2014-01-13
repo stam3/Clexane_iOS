@@ -99,8 +99,8 @@
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if (opCode == kOpCodeLogin) {
         
-        [[NSUserDefaults standardUserDefaults] setObject:self.emailTextField.text forKey:kProfileEmailID];
-        [[NSUserDefaults standardUserDefaults] setObject:self.pswdTextField.text forKey:kProfilePswdID];
+        [[NSUserDefaults standardUserDefaults] setObject:self.emailTextField.text forKey:kUserDefaultsProfileEmailID];
+        [[NSUserDefaults standardUserDefaults] setObject:self.pswdTextField.text forKey:kUserDefaultsProfilePswdID];
         [delegate closeSignupController];
     }
 }
