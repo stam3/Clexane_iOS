@@ -544,7 +544,7 @@ typedef enum {
             [medicineHistories addObject:pair];
         }
         
-        NSDictionary* info = @{@"name": kMedicineHistoryPerMedicineIDNotificationName, @"object" : self.historyMedIDsArray};
+        NSDictionary* info = @{@"name": kMedicineHistoryPerMedicineIDNotificationName, @"object" : medicineHistories};
         [self performSelectorOnMainThread:@selector(postNotificationNamed:) withObject:info waitUntilDone:NO];
     }
 }

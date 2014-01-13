@@ -38,7 +38,7 @@
 #define kParparAlertBody                      @"להחליף פרפר היום"
 
 static const BOOL rails = 1;
-static const BOOL debug = 1;
+static const BOOL debug = 0;
 
 typedef enum {
     kDateFormatterFullType,

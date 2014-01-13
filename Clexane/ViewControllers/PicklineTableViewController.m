@@ -81,14 +81,14 @@
         titleLabel.text = @"ניתן לשימוש";
         dateLabel.text = @"";
         titleLabel.textColor = [UIColor colorWithRed:24/255.0 green:153/255.0 blue:14/255.0 alpha:1.0];
-        button.enabled = YES;
+        //button.enabled = YES;
     }
     else {
         NSDate* nextDate = [lastDate dateByAddingTimeInterval:interval];
         dateLabel.text = [MainViewController stringFromDate:nextDate withFormat:kDateFormatterNoYearType];
         titleLabel.text = @"לא להשתמש עד:";
         titleLabel.textColor = [UIColor redColor];
-        button.enabled = NO;
+        //button.enabled = NO;
     }
 }
 
@@ -313,6 +313,7 @@
             lastHandledDateLabel.text = [MainViewController stringFromDate:self.picklineEntity.redLastWashDate withFormat:kDateFormatterNoYearType];
             [self setNextWashDate:self.picklineEntity.redLastWashDate forTitleLabel:nextHandledTitleLabel andDateLabel:nextHandledDateLabel withButton:button];
             segmentedControl.hidden = YES;
+            [button setTitle:@"נשטף עכשיו" forState:UIControlStateNormal];
             break;
         case kBlueRow:
             titleLabel.text = @"כחול";
@@ -320,6 +321,7 @@
             lastHandledDateLabel.text = [MainViewController stringFromDate:self.picklineEntity.blueLastWashDate withFormat:kDateFormatterNoYearType];
             [self setNextWashDate:self.picklineEntity.blueLastWashDate forTitleLabel:nextHandledTitleLabel andDateLabel:nextHandledDateLabel withButton:button];
             segmentedControl.hidden = YES;
+            [button setTitle:@"נשטף עכשיו" forState:UIControlStateNormal];
             break;
         case kBandageRow:
             titleLabel.text = @"חבישה";
