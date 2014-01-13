@@ -51,7 +51,7 @@
 {
     [super viewDidLoad];
     if (rails)
-        self.data = [[NSArray alloc] initWithObjects:@"Clexane", @"תרופות",@"פיקליין", @"יציאה", nil];
+        self.data = [[NSArray alloc] initWithObjects:@"Clexane", @"תרופות",@"פיקליין", @"חשבון", nil];
     else
         self.data = [[NSArray alloc] initWithObjects:@"Clexane", @"תרופות", @"פיקליין", nil];
 	// Do any additional setup after loading the view.
