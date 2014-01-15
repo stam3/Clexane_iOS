@@ -26,7 +26,9 @@
 #define kAPIMedicineHistoriesURL            @"/medicine_histories.json?history_type=%d"
 #define kAPIMedicineHistoriesPerMedicineURL @"/medicine_histories.json?history_type=2&medicine_id=%@"
 #define kAPIMedicineDestroyURL              @"/medicines/%@.json"
-#define kAPIMedicineHistoriesDestroyURL      @"/medicine_histories/%@.json"
+#define kAPIMedicineHistoriesDestroyURL     @"/medicine_histories/%@.json"
+#define kAPIResetPasswordURL                @"/password_resets"
+
 
 typedef enum {
     kHistoryDataTodayType = 300,
@@ -563,6 +565,14 @@ typedef enum {
     }
 }
 
+- (void)resetPassword:(NSString*)email delegate:(id<ModelManagerDelegate>) delegate {
+
+    self.delegate = delegate;
+    NSString* params = @"";
+    params = [params addURLParameterForKey:@"email" andObjectValue:email];
+    [self sendRequest:kAPIResetPasswordURL withParams:params method:kHTTPMethodPost];
+}
+
 #pragma mark- UrlLoaderDelegate
 
 - (void)urlLoadingDone:(NSData *)data {
@@ -572,6 +582,7 @@ typedef enum {
     NSDictionary* jsonResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSLog(@"Result: %@", jsonResult);
     
+    int opCode = [[jsonResult objectForKey:@"opcode"] intValue];
     int response = [[jsonResult objectForKey:@"response"] intValue];
 //    if (response == kAPIResponseUnauthorized) {
 //        NSLog(@"Unauthorized");
@@ -580,6 +591,10 @@ typedef enum {
     if (response != 200) {
         NSLog(@"Error: %d", response);
         NSString* err_msg = [NSString stringWithFormat:@"Error: %d\n%@", response, [jsonResult objectForKey:@"error_msg"]];
+        
+        if (self.delegate)
+            [self.delegate loadingDoneForOpcode:opCode response:response object:nil msg:err_msg];
+        
         SIAlertView* alertView = [[SIAlertView alloc] initWithTitle:@"Error" andMessage:err_msg];
             [alertView addButtonWithTitle:@"OK"
                                 type:SIAlertViewButtonTypeDefault
@@ -592,17 +607,16 @@ typedef enum {
         return;
     }
     id obj = nil;
-    int opCode = [[jsonResult objectForKey:@"opcode"] intValue];
     switch (opCode) {
         case kOpCodeSignup:
             if (self.delegate)
-                [self.delegate loadingDoneForOpcode:opCode response:response object:obj errMsg:[jsonResult objectForKey:@"error_msg"]];
+                [self.delegate loadingDoneForOpcode:opCode response:response object:obj msg:[jsonResult objectForKey:@"error_msg"]];
             break;
             // login
         case kOpCodeLogin:
             isLoggedin = YES;
             if (self.delegate)
-                [self.delegate loadingDoneForOpcode:opCode response:response object:obj errMsg:[jsonResult objectForKey:@"error_msg"]];
+                [self.delegate loadingDoneForOpcode:opCode response:response object:obj msg:[jsonResult objectForKey:@"error_msg"]];
             [[NSUserDefaults standardUserDefaults] setObject:[jsonResult objectForKey:@"picklineId"] forKey:kUserDefaultsProfilePicklineID];
             //user auth_token
             [self loadMedicineData1];
@@ -626,6 +640,10 @@ typedef enum {
             break;
         case kOpCodeMedicineHistorieCreate:
             obj = [[MedDatePair alloc] initWithDictionary:[jsonResult objectForKey:@"medicine_history"]];
+            break;
+        case kOpCodeResetPassword:
+            if (self.delegate)
+                [self.delegate loadingDoneForOpcode:opCode response:response object:nil msg:[jsonResult objectForKey:@"msg"]];
             break;
         default:
             break;

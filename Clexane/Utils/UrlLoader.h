@@ -8,14 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#define kHTTPMethodPost @"Post"
-#define kHTTPMethodGet @"Get"
-#define kHTTPMethodPut @"Put"
-#define kHTTPMethodDelete @"Delete"
-
-
-//#define kAPIBaseURL        @"http://0.0.0.0:3000"
-#define kAPIBaseURL        @"http://www.goforit.co.il"
+#define kHTTPMethodPost     @"Post"
+#define kHTTPMethodGet      @"Get"
+#define kHTTPMethodPut      @"Put"
+#define kHTTPMethodDelete   @"Delete"
 
 @protocol UrlLoaderDelegate <NSObject>
 

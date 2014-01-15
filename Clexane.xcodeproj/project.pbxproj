@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4702722D187A89690084E1B8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4702722C187A89690084E1B8 /* LoginViewController.m */; };
+		470DF99B1886D7A800B0E6D6 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470DF99A1886D7A800B0E6D6 /* ForgotPasswordViewController.m */; };
+		470DF99C1886D7A800B0E6D6 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470DF99A1886D7A800B0E6D6 /* ForgotPasswordViewController.m */; };
+		470DF99F1886DDB700B0E6D6 /* UtilsAndConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 470DF99E1886DDB700B0E6D6 /* UtilsAndConstants.m */; };
+		470DF9A01886DDB700B0E6D6 /* UtilsAndConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 470DF99E1886DDB700B0E6D6 /* UtilsAndConstants.m */; };
 		4713FCFA18116C9F00DA561B /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCF918116C9F00DA561B /* DatePickerViewController.m */; };
 		4713FCFD1812D01200DA561B /* MedicineDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713FCFC1812D01200DA561B /* MedicineDetailsViewController.m */; };
 		4733E9ED186594AF0035C26E /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733E9EC186594AF0035C26E /* NSString+Utilities.m */; };
@@ -106,6 +110,10 @@
 /* Begin PBXFileReference section */
 		4702722B187A89690084E1B8 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/Signup/LoginViewController.h; sourceTree = "<group>"; };
 		4702722C187A89690084E1B8 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/Signup/LoginViewController.m; sourceTree = "<group>"; };
+		470DF9991886D7A800B0E6D6 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgotPasswordViewController.h; path = ViewControllers/ForgotPasswordViewController.h; sourceTree = "<group>"; };
+		470DF99A1886D7A800B0E6D6 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgotPasswordViewController.m; path = ViewControllers/ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		470DF99D1886DDB700B0E6D6 /* UtilsAndConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsAndConstants.h; sourceTree = "<group>"; };
+		470DF99E1886DDB700B0E6D6 /* UtilsAndConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilsAndConstants.m; sourceTree = "<group>"; };
 		4713FCF818116C9F00DA561B /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerViewController.h; path = ViewControllers/DatePickerViewController.h; sourceTree = "<group>"; };
 		4713FCF918116C9F00DA561B /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerViewController.m; path = ViewControllers/DatePickerViewController.m; sourceTree = "<group>"; };
 		4713FCFB1812D01200DA561B /* MedicineDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedicineDetailsViewController.h; path = ViewControllers/MedicineDetailsViewController.h; sourceTree = "<group>"; };
@@ -340,6 +348,8 @@
 				47C6E0FB17D1E4FA00783ACF /* MainStoryboard.storyboard */,
 				47C6E0EA17D1E4F900783ACF /* Supporting Files */,
 				474661751877F7CE00D6C027 /* SignupStoryboard.storyboard */,
+				470DF99D1886DDB700B0E6D6 /* UtilsAndConstants.h */,
+				470DF99E1886DDB700B0E6D6 /* UtilsAndConstants.m */,
 			);
 			path = Clexane;
 			sourceTree = "<group>";
@@ -402,6 +412,8 @@
 				47AE1DDB181D895A00826D39 /* PicklineTableViewController.m */,
 				47F590641884814300B186B5 /* AccountViewController.h */,
 				47F590651884814300B186B5 /* AccountViewController.m */,
+				470DF9991886D7A800B0E6D6 /* ForgotPasswordViewController.h */,
+				470DF99A1886D7A800B0E6D6 /* ForgotPasswordViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -520,6 +532,7 @@
 				47C6E10017D1E4FA00783ACF /* ViewController.m in Sources */,
 				478E612D1811283700599906 /* AddOrEditMedicineViewController.m in Sources */,
 				47C6E10D17D1E98800783ACF /* ShotEntity.m in Sources */,
+				470DF99B1886D7A800B0E6D6 /* ForgotPasswordViewController.m in Sources */,
 				47518082181BCFF4005BD86C /* MedDatePair.m in Sources */,
 				47518086181C0821005BD86C /* PicklineEntity.m in Sources */,
 				47D1006B18281FAB00109CAC /* SIAlertView.m in Sources */,
@@ -528,6 +541,7 @@
 				478E6127181120CF00599906 /* MedicineMainViewController.m in Sources */,
 				478E612A181124DA00599906 /* MedicineEntity.m in Sources */,
 				47BD49571819AA1F008CCCFE /* ModelManager.m in Sources */,
+				470DF99F1886DDB700B0E6D6 /* UtilsAndConstants.m in Sources */,
 				47AE1DDC181D895A00826D39 /* PicklineTableViewController.m in Sources */,
 				47F590661884814300B186B5 /* AccountViewController.m in Sources */,
 				4713FCFA18116C9F00DA561B /* DatePickerViewController.m in Sources */,
@@ -552,6 +566,7 @@
 				47DA5423187D3A3C00CF318A /* ViewController.m in Sources */,
 				47DA5424187D3A3C00CF318A /* AddOrEditMedicineViewController.m in Sources */,
 				47DA5425187D3A3C00CF318A /* ShotEntity.m in Sources */,
+				470DF99C1886D7A800B0E6D6 /* ForgotPasswordViewController.m in Sources */,
 				47DA5426187D3A3C00CF318A /* MedDatePair.m in Sources */,
 				47DA5427187D3A3C00CF318A /* PicklineEntity.m in Sources */,
 				47DA5428187D3A3C00CF318A /* SIAlertView.m in Sources */,
@@ -560,6 +575,7 @@
 				47DA542B187D3A3C00CF318A /* MedicineMainViewController.m in Sources */,
 				47DA542C187D3A3C00CF318A /* MedicineEntity.m in Sources */,
 				47DA542D187D3A3C00CF318A /* ModelManager.m in Sources */,
+				470DF9A01886DDB700B0E6D6 /* UtilsAndConstants.m in Sources */,
 				47DA542E187D3A3C00CF318A /* PicklineTableViewController.m in Sources */,
 				47F590671884814300B186B5 /* AccountViewController.m in Sources */,
 				47DA542F187D3A3C00CF318A /* DatePickerViewController.m in Sources */,

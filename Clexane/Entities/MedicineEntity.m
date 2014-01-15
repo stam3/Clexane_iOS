@@ -481,7 +481,7 @@
 
 #pragma mark- ModelManagerDelegate methods
 
-- (void)loadingDoneForOpcode:(int)opCode response:(int)response object:(id)obj errMsg:(NSString*)msg {
+- (void)loadingDoneForOpcode:(int)opCode response:(int)response object:(id)obj msg:(NSString*)msg {
 
     self.medicineID = ((MedicineEntity*)obj).medicineID;
 }

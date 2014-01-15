@@ -13,6 +13,7 @@
 #import "UrlLoader.h"
 #import "User.h"
 #import "ModelManagerDelegate.h"
+#import "UtilsAndConstants.h"
 
 //#import "AppDelegate.h"
 
@@ -25,12 +26,16 @@
 #define kOpCodeMedicineHistoriesToday               310
 #define kOpCodeMedicineHistoriesTodayPerMedicine    320
 #define kOpCodeMedicineHistorieCreate               301
+#define kOpCodeResetPassword                        3
+
 
 
 #define kUserDefaultsProfilePicklineID          @"pickID"
 #define kUserDefaultsProfileEmailID             @"emailID"
 #define kUserDefaultsProfilePswdID              @"pswdID"
 #define kUserDefaultsPicklineOn              @"picklineOn"
+
+#define kAPIForgotPasswordURL               @"/password_resets/new" //@"/new_password_reset"
 
 @interface ModelManager : NSObject <UrlLoaderDelegate>
 
@@ -59,5 +64,6 @@
 - (void)createMedicieRecord:(MedicineEntity*)entity;
 - (void)deleteMedicieRecord:(MedicineEntity*)entity;
 - (void)updatePicklineRecord:(PicklineEntity*)entity;
+- (void)resetPassword:(NSString*)email delegate:(id<ModelManagerDelegate>) delegate;
 
 @end

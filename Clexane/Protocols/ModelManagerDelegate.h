@@ -10,6 +10,6 @@
 
 @protocol ModelManagerDelegate <NSObject>
 
-- (void)loadingDoneForOpcode:(int)opCode response:(int)response object:(id)obj errMsg:(NSString*)msg;
+- (void)loadingDoneForOpcode:(int)opCode response:(int)response object:(id)obj msg:(NSString*)msg;
 
 @end
