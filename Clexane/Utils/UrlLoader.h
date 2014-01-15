@@ -14,8 +14,8 @@
 #define kHTTPMethodDelete @"Delete"
 
 
-#define kAPIBaseURL        @"http://0.0.0.0:3000"
-//#define kAPIBaseURL        @"http://www.goforit.co.il"
+//#define kAPIBaseURL        @"http://0.0.0.0:3000"
+#define kAPIBaseURL        @"http://www.goforit.co.il"
 
 @protocol UrlLoaderDelegate <NSObject>
 
