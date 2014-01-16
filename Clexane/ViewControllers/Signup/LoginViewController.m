@@ -93,7 +93,7 @@
 - (void)loadingDoneForOpcode:(int)opCode response:(int)response object:(id)obj msg:(NSString*)msg {
 
     AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if (opCode == kOpCodeLogin) {
+    if (opCode == kOpCodeLogin && response == 200) {
         
         [[NSUserDefaults standardUserDefaults] setObject:self.emailTextField.text forKey:kUserDefaultsProfileEmailID];
         [[NSUserDefaults standardUserDefaults] setObject:self.pswdTextField.text forKey:kUserDefaultsProfilePswdID];

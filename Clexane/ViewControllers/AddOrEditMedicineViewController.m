@@ -200,6 +200,17 @@
         if (control != self.daysOfsetSwitch)
             control.enabled = !self.fixedDaysSwitch.on;
     }
+    for (UIView* view in [self.fixedDaysBGView subviews]) {
+        
+        if (view != self.fixedDaysSwitch)
+            view.alpha = (self.fixedDaysSwitch.on) ? 1.0 : 0.2;
+    }
+    for (UIView* view in [self.daysOfsetBGView subviews]) {
+        
+        if (view != self.daysOfsetSwitch)
+            view.alpha = (self.fixedDaysSwitch.on) ? 0.2 : 1.0;
+    }
+
     self.daysOfsetSwitch.on = !self.fixedDaysSwitch.on;
     
     self.resetSecondHourButton.enabled = NO;

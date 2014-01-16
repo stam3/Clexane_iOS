@@ -37,6 +37,7 @@
 {
     [super viewDidLoad];
     
+    [self.emailTextField becomeFirstResponder];
 //    NSLog(@"forgot pass url: %@", [NSString stringWithFormat:@"%@%@", kAPIBaseURL, kAPIForgotPasswordURL]);
 //    NSURLRequest* request = [[NSURLRequest alloc] initWithURL:
 //                             [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kAPIBaseURL, kAPIForgotPasswordURL]]];

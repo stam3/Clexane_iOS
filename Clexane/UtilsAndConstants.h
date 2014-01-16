@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define kAPIBaseURL                         @"http://0.0.0.0:3000"
-//#define kAPIBaseURL                       @"http://www.goforit.co.il"
+//#define kAPIBaseURL                         @"http://0.0.0.0:3000"
+#define kAPIBaseURL                       @"http://www.goforit.co.il"
 
 @interface UtilsAndConstants : NSObject
 

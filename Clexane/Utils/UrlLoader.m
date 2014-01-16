@@ -217,11 +217,20 @@ didReceiveResponse:(NSURLResponse *) response {
 -(void) connection:(NSURLConnection *) connection 
   didFailWithError:(NSError *) error {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-	NSLog(@"didFailWithError: %@", error);
+	NSLog(@"didFailWithError: %@\nerror code: %d", error, [error code]);
 	if(self.webData) {
         self.webData = nil;
     }
+    
     NSString* err_msg = [NSString stringWithFormat:@"Error: %@", error];
+    switch ([error code]) {
+        case -1004:
+            err_msg = @"השרת לא זמין. אנא נסו שוב מאוחר יותר.";
+            break;
+            
+        default:
+            break;
+    }
     SIAlertView* alertView = [[SIAlertView alloc] initWithTitle:@"Error" andMessage:err_msg];
     [alertView addButtonWithTitle:@"OK"
                              type:SIAlertViewButtonTypeDefault

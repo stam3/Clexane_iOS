@@ -338,7 +338,7 @@
             NSString* actualHour = @"";
             UIColor* color;
             if (pair.isDone) {
-                color = [UIColor lightGrayColor];
+                color = [UIColor colorWithRed:108/255.0 green:139/255.0 blue:159/255.0 alpha:1.0];
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 actualHour = [NSString stringWithFormat:@" - (%@)", [MainViewController stringFromDate:pair.actualHour withFormat:kDateFormatterHourType]];
             }
@@ -360,8 +360,8 @@
             MedDatePair* pair = [self.tomorrowSortedCombinedArray objectAtIndex:[indexPath row]];
             medLabel.text = pair.name;
             hourLabel.text = [MainViewController stringFromDate:pair.date withFormat:kDateFormatterHourType];
-            
-            UIColor* color = [UIColor blueColor];
+
+            UIColor* color = [UIColor colorWithRed:108/255.0 green:139/255.0 blue:159/255.0 alpha:1.0];
             medLabel.textColor = color;
             hourLabel.textColor = color;
             
@@ -386,10 +386,11 @@
 //    UIView *headerView = [self.table dequeueReusableHeaderFooterViewWithIdentifier:@"header1"];
 //    return headerView;
     UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320, 30.0)];
-    [customView setBackgroundColor:[UIColor lightGrayColor]];
+    [customView setBackgroundColor:[UIColor colorWithRed:209/255.0 green:112/255.0 blue:43/255.0 alpha:1.0]];
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 5.0, 310, 30.0)];
     label.textAlignment = NSTextAlignmentRight;
-    label.font = [UIFont boldSystemFontOfSize:20];
+    label.font = [UIFont boldSystemFontOfSize:18];
+    label.textColor = [UIColor whiteColor];
     [customView addSubview:label];
     
     switch (section) {
