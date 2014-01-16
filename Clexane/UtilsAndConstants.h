@@ -11,6 +11,9 @@
 //#define kAPIBaseURL                         @"http://0.0.0.0:3000"
 #define kAPIBaseURL                       @"http://www.goforit.co.il"
 
+static const BOOL rails = 0;
+static const BOOL debug = 0;
+
 @interface UtilsAndConstants : NSObject
 
 @end
