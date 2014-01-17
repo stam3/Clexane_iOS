@@ -1,12 +1,12 @@
 //
-//  ViewController.m
+//  ClexaneViewController.m
 //  Clexane
 //
 //  Created by David Sayag on 8/31/13.
 //  Copyright (c) 2013 David Sayag. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ClexaneViewController.h"
 #import "ShotEntity.h"
 #import "MainViewController.h"
 #import "AppDelegate.h"
@@ -18,7 +18,7 @@
 #define kIsRightColumn  @"isRight"
 #define kDosageColumn   @"dosage"
 
-@interface ViewController ()
+@interface ClexaneViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *addLeftButton;
 @property (weak, nonatomic) IBOutlet UIButton *addRightButton;
@@ -39,7 +39,7 @@
 
 @end
 
-@implementation ViewController {
+@implementation ClexaneViewController {
     
     double diffSinceLast;
     

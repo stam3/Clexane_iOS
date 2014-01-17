@@ -36,8 +36,11 @@
     NSString* storyboardName = @"MainStoryboard";
     if (!signedup)
         storyboardName = @"SignupStoryboard";
-    else
+    
+    if (rails)
         [self.modelManager loginExistingUserWithDelegate:nil];
+    else
+        [self refreshData];
     
     UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     UIViewController *rootController = [settingsStoryboard instantiateInitialViewController];

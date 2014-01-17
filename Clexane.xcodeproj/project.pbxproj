@@ -51,7 +51,7 @@
 		47C6E0F817D1E4F900783ACF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0F717D1E4F900783ACF /* Default@2x.png */; };
 		47C6E0FA17D1E4F900783ACF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0F917D1E4F900783ACF /* Default-568h@2x.png */; };
 		47C6E0FD17D1E4FA00783ACF /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C6E0FB17D1E4FA00783ACF /* MainStoryboard.storyboard */; };
-		47C6E10017D1E4FA00783ACF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0FF17D1E4FA00783ACF /* ViewController.m */; };
+		47C6E10017D1E4FA00783ACF /* ClexaneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0FF17D1E4FA00783ACF /* ClexaneViewController.m */; };
 		47C6E10D17D1E98800783ACF /* ShotEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E10C17D1E98800783ACF /* ShotEntity.m */; };
 		47D1006A18281FAB00109CAC /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 47D1006518281FAB00109CAC /* SIAlertView.bundle */; };
 		47D1006B18281FAB00109CAC /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D1006718281FAB00109CAC /* SIAlertView.m */; };
@@ -63,7 +63,7 @@
 		47DA5420187D3A3C00CF318A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4702722C187A89690084E1B8 /* LoginViewController.m */; };
 		47DA5421187D3A3C00CF318A /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1DE21822E44500826D39 /* NSDate-Utilities.m */; };
 		47DA5422187D3A3C00CF318A /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733E9EC186594AF0035C26E /* NSString+Utilities.m */; };
-		47DA5423187D3A3C00CF318A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0FF17D1E4FA00783ACF /* ViewController.m */; };
+		47DA5423187D3A3C00CF318A /* ClexaneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E0FF17D1E4FA00783ACF /* ClexaneViewController.m */; };
 		47DA5424187D3A3C00CF318A /* AddOrEditMedicineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478E612C1811283700599906 /* AddOrEditMedicineViewController.m */; };
 		47DA5425187D3A3C00CF318A /* ShotEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C6E10C17D1E98800783ACF /* ShotEntity.m */; };
 		47DA5426187D3A3C00CF318A /* MedDatePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 47518081181BCFF4005BD86C /* MedDatePair.m */; };
@@ -173,8 +173,8 @@
 		47C6E0F717D1E4F900783ACF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		47C6E0F917D1E4F900783ACF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		47C6E0FC17D1E4FA00783ACF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		47C6E0FE17D1E4FA00783ACF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		47C6E0FF17D1E4FA00783ACF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		47C6E0FE17D1E4FA00783ACF /* ClexaneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClexaneViewController.h; sourceTree = "<group>"; };
+		47C6E0FF17D1E4FA00783ACF /* ClexaneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClexaneViewController.m; sourceTree = "<group>"; };
 		47C6E10B17D1E98800783ACF /* ShotEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShotEntity.h; sourceTree = "<group>"; };
 		47C6E10C17D1E98800783ACF /* ShotEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotEntity.m; sourceTree = "<group>"; };
 		47D1006518281FAB00109CAC /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
@@ -392,8 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				474661781877F80B00D6C027 /* Signup */,
-				47C6E0FE17D1E4FA00783ACF /* ViewController.h */,
-				47C6E0FF17D1E4FA00783ACF /* ViewController.m */,
+				47C6E0FE17D1E4FA00783ACF /* ClexaneViewController.h */,
+				47C6E0FF17D1E4FA00783ACF /* ClexaneViewController.m */,
 				47F5DE8E1809A292003D7FD3 /* MainViewController.h */,
 				47F5DE8F1809A292003D7FD3 /* MainViewController.m */,
 				478E6125181120CF00599906 /* MedicineMainViewController.h */,
@@ -529,7 +529,7 @@
 				4702722D187A89690084E1B8 /* LoginViewController.m in Sources */,
 				47AE1DE31822E44500826D39 /* NSDate-Utilities.m in Sources */,
 				4733E9ED186594AF0035C26E /* NSString+Utilities.m in Sources */,
-				47C6E10017D1E4FA00783ACF /* ViewController.m in Sources */,
+				47C6E10017D1E4FA00783ACF /* ClexaneViewController.m in Sources */,
 				478E612D1811283700599906 /* AddOrEditMedicineViewController.m in Sources */,
 				47C6E10D17D1E98800783ACF /* ShotEntity.m in Sources */,
 				470DF99B1886D7A800B0E6D6 /* ForgotPasswordViewController.m in Sources */,
@@ -563,7 +563,7 @@
 				47DA5420187D3A3C00CF318A /* LoginViewController.m in Sources */,
 				47DA5421187D3A3C00CF318A /* NSDate-Utilities.m in Sources */,
 				47DA5422187D3A3C00CF318A /* NSString+Utilities.m in Sources */,
-				47DA5423187D3A3C00CF318A /* ViewController.m in Sources */,
+				47DA5423187D3A3C00CF318A /* ClexaneViewController.m in Sources */,
 				47DA5424187D3A3C00CF318A /* AddOrEditMedicineViewController.m in Sources */,
 				47DA5425187D3A3C00CF318A /* ShotEntity.m in Sources */,
 				470DF99C1886D7A800B0E6D6 /* ForgotPasswordViewController.m in Sources */,
