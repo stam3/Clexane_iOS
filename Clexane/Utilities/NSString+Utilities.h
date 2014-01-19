@@ -14,4 +14,7 @@
 - (NSString*)addURLParameterForKey:(NSString*)key andDateValue:(NSDate*)value;
 - (NSString*)addURLParameterForKey:(NSString*)key andIntValue:(int)value;
 
++ (NSString*)generateJSONWithKey:(NSString*)key andDataFromDictionary:(NSDictionary*)values;
+
+
 @end

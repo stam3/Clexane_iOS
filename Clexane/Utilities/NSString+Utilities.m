@@ -31,4 +31,17 @@
     return params;
 }
 
++ (NSString*)generateJSONWithKey:(NSString*)key andDataFromDictionary:(NSDictionary*)values {
+    
+    //{"user":{"email":"test@example.com", "password":"Test123", "password_confirmation":"Test123"}}
+    NSString* json = [NSString stringWithFormat:@"{\"%@\":{", key];
+    int i = 0;
+    for (NSString* jsonKey in [values allKeys]) {
+        json = [NSString stringWithFormat:@"%@%@\"%@\":\"%@\"", json, (i > 0) ? @"," : @"", jsonKey, [values objectForKey:jsonKey]];
+        i++;
+    }
+    json = [NSString stringWithFormat:@"%@}}", json];
+    return json;
+}
+
 @end

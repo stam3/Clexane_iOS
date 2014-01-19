@@ -325,10 +325,10 @@
             </objects>
             <point key="canvasLocation" x="92" y="-800"/>
         </scene>
-        <!--View Controller-->
+        <!--Clexane View Controller-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="ClexaneViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

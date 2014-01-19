@@ -12,7 +12,7 @@
 //#define kAPIBaseURL                       @"http://www.goforit.co.il"
 
 static const BOOL rails = 1;
-static const BOOL debug = 0;
+static const BOOL debug = 1;
 
 @interface UtilsAndConstants : NSObject
 

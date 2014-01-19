@@ -7,8 +7,22 @@
 //
 
 #import "ShotEntity.h"
+#include "NSDate-Utilities.h"
 
 @implementation ShotEntity
+
+- (id)initWithDictionary:(NSDictionary*)record {
+    self = [super init];
+    if (self) {
+        if (![[record objectForKey:kDosageColumn] isKindOfClass:[NSNull class]])
+            _dosage = [[record objectForKey:kDosageColumn] intValue];
+        if (![[record objectForKey:kIsRightColumn] isKindOfClass:[NSNull class]])
+            _isRight = [record objectForKey:kIsRightColumn];
+        if (![[record objectForKey:kShotDateColumn] isKindOfClass:[NSNull class]])
+            _timestamp = [NSDate dateFromRFC822String:[record objectForKey:kShotDateColumn]];
+    }
+    return self;
+}
 
 //#pragma mark - NSCoding Methods
 //-(void)encodeWithCoder:(NSCoder *)aCoder {
@@ -31,5 +45,13 @@
 //   copy.isRight = [self.isRight copyWithZone:zone];
 //   return copy;
 //}
+
+- (NSDictionary*)convertObjToDictionary {
+    
+    NSDictionary* dict = @{@"dosage": [NSString stringWithFormat:@"%d", self.dosage],
+                           @"isRight": self.isRight,
+                           @"shotDate": self.timestamp};
+    return dict;
+}
 
 @end

@@ -18,16 +18,18 @@
 
 
 #define kAPILoginURL                        @"/login.json"
-#define kAPISignupURL                        @"/signup.json"
+#define kAPISignupURL                       @"/signup.json"
 #define kAPIMedicineURL                     @"/medicines.json"
 #define kAPIMedicineUpdateURL               @"/medicines/%@.json"
 #define kAPIPicklineURL                     @"/picklines/%@.json"
-#define kAPIMedicineHistoriesCreateURL       @"/medicine_histories.json"
+#define kAPIMedicineHistoriesCreateURL      @"/medicine_histories.json"
 #define kAPIMedicineHistoriesURL            @"/medicine_histories.json?history_type=%d"
 #define kAPIMedicineHistoriesPerMedicineURL @"/medicine_histories.json?history_type=2&medicine_id=%@"
 #define kAPIMedicineDestroyURL              @"/medicines/%@.json"
 #define kAPIMedicineHistoriesDestroyURL     @"/medicine_histories/%@.json"
 #define kAPIResetPasswordURL                @"/password_resets"
+#define kAPIClexaneHistoriesURL             @"/clexane_histories.json"
+
 
 
 typedef enum {
@@ -436,21 +438,21 @@ typedef enum {
     //[self.alertView dismissAnimated:YES];
 }
 
-- (void)loadFromRails {
-    
-    UrlLoader* urlLoader = [[UrlLoader alloc] init];
-    urlLoader.delegate = self;
-
-   // [urlLoader startLoadingUrl:@"http://0.0.0.0:3000/medicines"];
-    NSString* postData = @"email=h&password=1";
-   // NSDictionary* data = @{@"email": @"h", @"password": @"1"};
-    //BOOL check = [NSJSONSerialization isValidJSONObject:data];
-//    /[NSJSONSerialization dataWithJSONObject:postData options:0 error:nil]
-//    [urlLoader startPost:kAPILoginURL withPostDataStr:postData];
-    [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
-
-}
-
+//- (void)loadFromRails {
+//    
+//    UrlLoader* urlLoader = [[UrlLoader alloc] init];
+//    urlLoader.delegate = self;
+//
+//   // [urlLoader startLoadingUrl:@"http://0.0.0.0:3000/medicines"];
+//    NSString* postData = @"email=h&password=1";
+//   // NSDictionary* data = @{@"email": @"h", @"password": @"1"};
+//    //BOOL check = [NSJSONSerialization isValidJSONObject:data];
+////    /[NSJSONSerialization dataWithJSONObject:postData options:0 error:nil]
+////    [urlLoader startPost:kAPILoginURL withPostDataStr:postData];
+//    [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
+//
+//}
+//
 #pragma mark- Private Calls
 
 - (User*)getLoggedinUser {
@@ -479,7 +481,7 @@ typedef enum {
     urlLoader.delegate = self;
     
     NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@", email, password];
-    [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
+    [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost contentType:kContentTypePostData];
 }
 
 - (void)login:(User*)user delegate:(id<ModelManagerDelegate>) delegate {
@@ -489,7 +491,7 @@ typedef enum {
     urlLoader.delegate = self;
     
     NSString* postData = [NSString stringWithFormat:@"email=%@&password=%@", user.email, user.password];
-    [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost];
+    [urlLoader sendRequest:kAPILoginURL withParams:postData httpMethod:kHTTPMethodPost contentType:kContentTypePostData];
 }
 
 - (void)loginExistingUserWithDelegate:(id<ModelManagerDelegate>) delegate {
@@ -521,19 +523,15 @@ typedef enum {
 
 - (void)extractMedicineData:(NSDictionary*) jsonResult {
     
-//    int result = [[jsonResult objectForKey:@"result"] intValue];
-//    if (result == 0) {
-    
-        self.medicineData = [[NSMutableArray alloc] init];
-        NSArray* array = [jsonResult objectForKey:@"medicines"];
-        for (NSDictionary* medDictionary in array) {
-            NSLog(@": %@", medDictionary);
-            MedicineEntity* entity = [[MedicineEntity alloc] initWithDictionary:medDictionary];
-                [self.medicineData addObject:entity];
-        }
-        NSDictionary* info = @{@"name": kMedicineNotificationName, @"object" : self.medicineData};
-        [self performSelectorOnMainThread:@selector(postNotificationNamed:) withObject:info waitUntilDone:NO];
-//    }
+    self.medicineData = [[NSMutableArray alloc] init];
+    NSArray* array = [jsonResult objectForKey:@"medicines"];
+    for (NSDictionary* medDictionary in array) {
+        NSLog(@": %@", medDictionary);
+        MedicineEntity* entity = [[MedicineEntity alloc] initWithDictionary:medDictionary];
+            [self.medicineData addObject:entity];
+    }
+    NSDictionary* info = @{@"name": kMedicineNotificationName, @"object" : self.medicineData};
+    [self performSelectorOnMainThread:@selector(postNotificationNamed:) withObject:info waitUntilDone:NO];
 }
 
 - (void)extractMedicineHistoriesDataForMedicineID:(NSDictionary*)jsonResult {
@@ -545,8 +543,21 @@ typedef enum {
             MedDatePair *pair = [[MedDatePair alloc] initWithDictionary:pairDictionary];
             [medicineHistories addObject:pair];
         }
-        
         NSDictionary* info = @{@"name": kMedicineHistoryPerMedicineIDNotificationName, @"object" : medicineHistories};
+        [self performSelectorOnMainThread:@selector(postNotificationNamed:) withObject:info waitUntilDone:NO];
+    }
+}
+
+- (void)extractClexaneHistoriesData:(NSDictionary*)jsonResult {
+    
+    NSMutableArray* clexaneHistories = [[NSMutableArray alloc] init];
+    NSArray* array = [jsonResult objectForKey:@"clexane_histories"];
+    if (![array isKindOfClass:[NSNull class]] && [array count] > 0) {
+        for (NSDictionary* dictionary in array) {
+            ShotEntity *shotEntity = [[ShotEntity alloc] initWithDictionary:dictionary];
+            [clexaneHistories addObject:shotEntity];
+        }
+        NSDictionary* info = @{@"name": kClexaneHistoriesNotificationName, @"object" : clexaneHistories};
         [self performSelectorOnMainThread:@selector(postNotificationNamed:) withObject:info waitUntilDone:NO];
     }
 }
@@ -571,6 +582,17 @@ typedef enum {
     NSString* params = @"";
     params = [params addURLParameterForKey:@"email" andObjectValue:email];
     [self sendRequest:kAPIResetPasswordURL withParams:params method:kHTTPMethodPost];
+}
+
+- (void)createClexaneHistoryRecord:(ShotEntity*)entity {
+    
+    NSString* params = [NSString generateJSONWithKey:@"clexane_history" andDataFromDictionary:[entity convertObjToDictionary]];
+    [self sendRequest:kAPIClexaneHistoriesURL withParams:params method:kHTTPMethodPost];
+}
+
+- (void)loadClexaneHistoryData {
+    
+    [self sendRequest:kAPIClexaneHistoriesURL withParams:nil method:kHTTPMethodGet];
 }
 
 #pragma mark- UrlLoaderDelegate
@@ -645,6 +667,9 @@ typedef enum {
             if (self.delegate)
                 [self.delegate loadingDoneForOpcode:opCode response:response object:nil msg:[jsonResult objectForKey:@"msg"]];
             break;
+        case kOpCodeClexaneHistories:
+            [self extractClexaneHistoriesData:jsonResult];
+            break;
         default:
             break;
     }
@@ -689,7 +714,6 @@ typedef enum {
     
     [self sendRequest:[NSString stringWithFormat:kAPIMedicineHistoriesDestroyURL, entity.pairID]  withParams:nil method:kHTTPMethodDelete];
 }
-
 
 - (NSString*)getMedicineRequestParamsForEntity:(MedicineEntity*)entity {
     

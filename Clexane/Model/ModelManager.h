@@ -14,6 +14,7 @@
 #import "User.h"
 #import "ModelManagerDelegate.h"
 #import "UtilsAndConstants.h"
+#import "ShotEntity.h"
 
 //#import "AppDelegate.h"
 
@@ -27,6 +28,8 @@
 #define kOpCodeMedicineHistoriesTodayPerMedicine    320
 #define kOpCodeMedicineHistorieCreate               301
 #define kOpCodeResetPassword                        3
+#define kOpCodeClexaneHistories                     600
+
 
 
 
@@ -66,4 +69,6 @@
 - (void)updatePicklineRecord:(PicklineEntity*)entity;
 - (void)resetPassword:(NSString*)email delegate:(id<ModelManagerDelegate>) delegate;
 
+- (void)createClexaneHistoryRecord:(ShotEntity*)entity;
+- (void)loadClexaneHistoryData;
 @end

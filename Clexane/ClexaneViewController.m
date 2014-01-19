@@ -13,10 +13,7 @@
 #import "MainViewController.h"
 #import "MedDatePair.h"
 #import "SIAlertView.h"
-
-#define kShotDateColumn @"shotDate"
-#define kIsRightColumn  @"isRight"
-#define kDosageColumn   @"dosage"
+//#import "UtilsAndConstants.h"
 
 @interface ClexaneViewController ()
 
@@ -126,66 +123,72 @@
     //[self setIntervalSinceLastDate];
 }
 
-- (void)loadData {
+- (void)dealloc {
     
-    [self.alertView show];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark- Private Methods
+
+- (void)loadData {
     
     self.data = [[NSMutableArray alloc] init];
     self.lastDate = nil;
-    self.pfObject = [PFObject objectWithClassName:self.className];
-    PFQuery *query = [PFQuery queryWithClassName:self.className];
-    query.limit = kClexaneQueryLimit;
-    [query orderByDescending:@"createdAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            if (objects) {
+    
+    if (rails) {
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onHistoryDataReady:) name:kClexaneHistoriesNotificationName object:nil];
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [delegate.modelManager loadClexaneHistoryData];
+        
+    } else {
+        [self.alertView show];
+        self.pfObject = [PFObject objectWithClassName:self.className];
+        PFQuery *query = [PFQuery queryWithClassName:self.className];
+        query.limit = kClexaneQueryLimit;
+        [query orderByDescending:@"createdAt"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // The find succeeded.
                 if (objects) {
-                    NSLog(@"Successfully retrieved %d scores.", objects.count);
-                    // Do something with the found objects
-                    for (PFObject *object in objects) {
-                        
-                        ShotEntity *entity = [[ShotEntity alloc] init];
-                        NSDate* shotDate = [object objectForKey:kShotDateColumn];
-                        //[self.data addObject:[ViewController stringFromDate:shotDate]];
-                        entity.timestamp = shotDate;
-                        
-                        NSNumber* num = [object objectForKey:kIsRightColumn];
-                        //[self.data addObject:num];
-                        entity.isRight = num;
-                        //NSLog(@"%@", [object createdAt]);
-                        
-                        entity.dosage = [[object objectForKey:kDosageColumn] intValue];
-                        
-                        if (!self.lastDate) {
+                    if (objects) {
+                        NSLog(@"Successfully retrieved %d scores.", objects.count);
+                        // Do something with the found objects
+                        for (PFObject *object in objects) {
                             
-                            self.lastDate = shotDate;
-                            //                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-                            //                [dateFormat setDateFormat:kDateFormat];
-                            //                self.lastDate = [dateFormat dateFromString:date];
+                            ShotEntity *entity = [[ShotEntity alloc] init];
+                            NSDate* shotDate = [object objectForKey:kShotDateColumn];
+                            entity.timestamp = shotDate;
+                            
+                            NSNumber* num = [object objectForKey:kIsRightColumn];
+                            entity.isRight = num;
+                            entity.dosage = [[object objectForKey:kDosageColumn] intValue];
+                            
+                            if (!self.lastDate)
+                                self.lastDate = shotDate;
+                            
+                            [self.data addObject:entity];
                         }
-                        
-                        //self.lastDate = [object createdAt];
-                        [self.data addObject:entity];
                     }
+                   // [self.table reloadData];
                 }
-                [self.table reloadData];
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-        
-        self.dateLabel.text = @"";
-        
-        // for first run...
-        self.addRightButton.enabled = YES;
-        self.addLeftButton.enabled = YES;
-        // ===============================
-        
-        [self setIntervalSinceLastDate];
-        [self.alertView dismissAnimated:YES];
-    }];
+            
+            [self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:NO];
+//            self.dateLabel.text = @"";
+//            
+//            // for first run...
+//            self.addRightButton.enabled = YES;
+//            self.addLeftButton.enabled = YES;
+//            // ===============================
+//            
+//            [self setIntervalSinceLastDate];
+            [self.alertView dismissAnimated:YES];
+        }];
+    }
 }
 
 - (void)setIntervalSinceLastDate {
@@ -246,7 +249,7 @@
 
 - (void)addEntry:(NSNumber*)isRight {
     
-    [self.alertView show];
+
     [self.dosageTextField resignFirstResponder];
     
     NSDate* now = [NSDate date];
@@ -261,27 +264,24 @@
     
     [self.table reloadData];
     
-    self.pfObject = [PFObject objectWithClassName:self.className];
-    
-    //[self.pfObject setObject:self.data forKey:@"shotsArray"];
-    [self.pfObject setObject:isRight forKey:kIsRightColumn];
-    [self.pfObject setObject:now forKey:kShotDateColumn];
-    NSNumber* dosage = [NSNumber numberWithInt:[self.dosageTextField.text intValue]];
-    [self.pfObject setObject:dosage forKey:kDosageColumn];
-    //[self.pfObject setObject:self.lastDate forKey:@"lastDate"];
-    [self.pfObject save];
-    
+    if (rails) {
+        AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [delegate.modelManager createClexaneHistoryRecord:entity];
+        
+    } else {
+        [self.alertView show];
+        self.pfObject = [PFObject objectWithClassName:self.className];
+        
+        //[self.pfObject setObject:self.data forKey:@"shotsArray"];
+        [self.pfObject setObject:isRight forKey:kIsRightColumn];
+        [self.pfObject setObject:now forKey:kShotDateColumn];
+        NSNumber* dosage = [NSNumber numberWithInt:[self.dosageTextField.text intValue]];
+        [self.pfObject setObject:dosage forKey:kDosageColumn];
+        //[self.pfObject setObject:self.lastDate forKey:@"lastDate"];
+        [self.pfObject save];
+        [self.alertView dismissAnimated:YES];
+    }
     [self setIntervalSinceLastDate];
-    
-//    // save to history
-//    MedDatePair* pair = [[MedDatePair alloc] init];
-//    pair.isDone = YES;
-//    pair.actualHour = now;
-//    
-//    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-//    [delegate.modelManager updateDBWithPair:pair];
-
-    [self.alertView dismissAnimated:YES];
 }
 
 - (IBAction)addRightClicked:(id)sender {
@@ -302,8 +302,7 @@
 
 - (IBAction)refreshClicked:(id)sender {
     
-    AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    [delegate refreshData];
+    [self loadData];
 }
 
 #pragma mark - Table view data source
@@ -399,6 +398,32 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)updateUI {
+    
+    [self.table reloadData];
+    self.dateLabel.text = @"";
+    
+    // for first run...
+    self.addRightButton.enabled = YES;
+    self.addLeftButton.enabled = YES;
+    // ===============================
+    
+    [self setIntervalSinceLastDate];
+}
+
+#pragma mark - Model Methods
+
+- (void)onHistoryDataReady:(NSNotification*)notification {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.data = [notification object];
+    if (self.data && [self.data count] > 0) {
+        
+        self.lastDate = ((ShotEntity*)[self.data objectAtIndex:0]).timestamp;
+        [self updateUI];
+    }
 }
 
 @end

@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define kClexaneMinHours            11
+#define kClexaneMinHours            0
 #define kClexaneQueryLimit          20
 #define kMedicineHistoryQueryLimit  20
 
@@ -26,11 +26,13 @@
 
 #define kVentilesIntervalDays       7
 
-#define kMedicineNotificationName   @"MedicineNotification"
-#define kPicklineNotificationName   @"PicklineNotification"
-#define kCheckedItemsNotificationName   @"CheckedItemsNotification"
+#define kMedicineNotificationName                       @"MedicineNotification"
+#define kPicklineNotificationName                       @"PicklineNotification"
+#define kCheckedItemsNotificationName                   @"CheckedItemsNotification"
 #define kMedicineHistoryPerMedicineIDNotificationName   @"MedicineHistoryNotification"
-#define kNextNotificationCanceledNotificationName   @"NextAlertCanceledNotification"
+#define kNextNotificationCanceledNotificationName       @"NextAlertCanceledNotification"
+#define kClexaneHistoriesNotificationName               @"ClexaneHistoriesNotification"
+
 
 #define kBandageAlertBody                       @"להחליף תחבושת היום"
 #define kRedVentileAlertBody                      @"להחליף ונטיל אדום היום"

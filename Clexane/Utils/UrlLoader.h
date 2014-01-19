@@ -13,6 +13,9 @@
 #define kHTTPMethodPut      @"Put"
 #define kHTTPMethodDelete   @"Delete"
 
+#define kContentTypePostData   @"application/x-www-form-urlencoded"
+#define kContentTypeJSONData   @"application/json"
+
 @protocol UrlLoaderDelegate <NSObject>
 
 - (void) urlLoadingDone:(NSData*)data;
@@ -28,11 +31,9 @@
 - (void)startPostToURL:(NSString*)urlStr withPostData:(NSData*)postData;
 
 - (void)sendRequest:(NSString *)requestURL withParams:(NSString *)params httpMethod:(NSString *)method;
+- (void)sendRequest:(NSString *)requestURL withParams:(NSString *)params httpMethod:(NSString *)method
+        contentType:(NSString *)contentType;
 
-
-//- (void) startPost:(NSString *) urlStr withPostDataStr:(NSString *) postData;
-//- (void) startPost:(NSString *) urlStr withPostData:(NSString *) postData storeDataIn:(NSMutableData *) data;
-//- (void)startPostToURL:(NSString*) urlStr withPostDataString:(NSString*)postDataStr isJson:(BOOL)isJson;
 - (void)cancel;
 
 @end

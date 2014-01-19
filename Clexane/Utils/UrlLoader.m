@@ -65,7 +65,8 @@
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url];
 	[request setHTTPMethod:@"POST"];
 	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	[request setHTTPBody:postData];
     
 	self.connection = [[NSURLConnection alloc]
@@ -84,8 +85,13 @@
 //    
 //    [self startPostToURL:urlStr withPostData:postData];
 //}
-
 - (void)sendRequest:(NSString *)requestURL withParams:(NSString *)params httpMethod:(NSString *)method {
+ 
+    [self sendRequest:requestURL withParams:params httpMethod:method contentType:kContentTypeJSONData];
+}
+
+- (void)sendRequest:(NSString *)requestURL withParams:(NSString *)params httpMethod:(NSString *)method
+                                                contentType:(NSString *)contentType {
  
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	self.webData = [NSMutableData data];
@@ -95,7 +101,6 @@
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: url];
     
-	//NSString *post = @"login_email=gilddd@2.com&password=&login_b=login";
     if (params) {
         NSData *encodedPostData = [params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%d", [encodedPostData length]];
@@ -105,8 +110,7 @@
     }
 	
 	[request setHTTPMethod:method];
-	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    //[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
     
     NSMutableString* cookieStringToSet = [[NSMutableString alloc] init];
     NSArray *cookiesToSet = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:kAPIBaseURL]];
